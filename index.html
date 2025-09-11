@@ -11,38 +11,71 @@
       background: #fdf6f0;
       color: #222;
     }
+
+    /* Banner (slider) */
+    .banner-container {
+      position: relative;
+      width: 100%;
+      max-height: 450px;
+      overflow: hidden;
+    }
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 15s infinite;
+    }
+    .slide {
+      flex: 1 0 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% {transform: translateX(0);}
+      33% {transform: translateX(0);}
+      36% {transform: translateX(-100%);}
+      66% {transform: translateX(-100%);}
+      69% {transform: translateX(-200%);}
+      99% {transform: translateX(-200%);}
+      100% {transform: translateX(0);}
+    }
+
     header {
       background: linear-gradient(135deg, #000, #333);
       color: white;
-      padding: 50px 20px;
+      padding: 20px;
       text-align: center;
     }
     header img {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
+      font-size: 2rem;
+      letter-spacing: 1px;
     }
     header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
+      font-size: 1rem;
+      margin-top: 5px;
       color: #ddd;
     }
+
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
+      margin-top: 10px;
+      padding: 10px 20px;
       background: black;
       color: gold;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
     }
+
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -79,6 +112,7 @@
       border-radius: 6px;
       font-weight: bold;
     }
+
     .about, .contact {
       padding: 40px 20px;
       text-align: center;
@@ -90,6 +124,7 @@
       margin-bottom: 15px;
       color: black;
     }
+
     footer {
       background: #000;
       color: #aaa;
@@ -100,6 +135,23 @@
   </style>
 </head>
 <body>
+
+  <!-- Banner Slider -->
+  <div class="banner-container">
+    <div class="slides">
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1592945403244-7f2e7a61f6c1?w=1200" alt="Perfume Banner 1">
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1600185365926-3d2fdbef6740?w=1200" alt="Perfume Banner 2">
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1584949091598-c5f3c5d7a2b4?w=1200" alt="Perfume Banner 3">
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
   <header>
     <img src="logo.png" alt="Natural Fragrance Logo">
     <h1>Natural Fragrance</h1>
@@ -107,63 +159,47 @@
     <a href="#products" class="btn">Shop Now</a>
   </header>
 
+  <!-- Products -->
   <section id="products" class="products">
-    <!-- Perfume 1 -->
     <div class="card">
-      <a href="red-drift.jpg" target="_blank">
-        <img src="red-drift.jpg" alt="Red Drift">
-      </a>
+      <img src="https://via.placeholder.com/300x220" alt="Red Drift">
       <h3>Red Drift</h3>
       <p>Price: Rs. 1500</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 2 -->
     <div class="card">
-      <a href="executive-aura.jpg" target="_blank">
-        <img src="executive-aura.jpg" alt="Executive Aura">
-      </a>
+      <img src="https://via.placeholder.com/300x220" alt="Executive Aura">
       <h3>Executive Aura</h3>
       <p>Price: Rs. 1800</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 3 -->
     <div class="card">
-      <a href="bombshell.jpg" target="_blank">
-        <img src="bombshell.jpg" alt="BombShell">
-      </a>
+      <img src="https://via.placeholder.com/300x220" alt="BombShell">
       <h3>BombShell</h3>
       <p>Price: Rs. 2000</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 4 -->
     <div class="card">
-      <a href="Oud Al Huda.jpeg" target="_blank">
-        <img src="Oud Al Huda.jpeg" alt="Oud Al Huda">
-      </a>
+      <img src="https://via.placeholder.com/300x220" alt="Oud Al Huda">
       <h3>Oud Al Huda</h3>
       <p>Price: Rs. 1700</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 5 -->
     <div class="card">
-      <a href="9pm.jpg" target="_blank">
-        <img src="9pm.jpg" alt="9:00 PM">
-      </a>
+      <img src="https://via.placeholder.com/300x220" alt="9:00 PM">
       <h3>9:00 PM</h3>
       <p>Price: Rs. 1600</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%209:00%20PM" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 6 -->
     <div class="card">
-      <a href="Royal Amirah.jpeg" target="_blank">
-        <img src="Royal Amirah.jpeg" alt="Royal Amirah">
-      </a>
+      <img src="https://via.placeholder.com/300x220" alt="Royal Amirah">
       <h3>Royal Amirah</h3>
       <p>Price: Rs. 2100</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
     </div>
   </section>
 
+  <!-- About -->
   <section class="about">
     <h2>Why Choose Us?</h2>
     <p>✔ Premium Quality Oils</p>
@@ -172,12 +208,14 @@
     <p>✔ Free Delivery on Bulk Orders</p>
   </section>
 
+  <!-- Contact -->
   <section class="contact">
     <h2>Contact Us</h2>
     <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
     <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
   </footer>
