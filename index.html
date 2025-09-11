@@ -1,210 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Natural Fragrance</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background: #fdf6f0;
-      color: #222;
-    }
-    header {
-      background: linear-gradient(135deg, #000, #333);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-    }
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: #ddd;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: black;
-      color: gold;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-    }
-    .card img {
-  width: 100%;
-  height: auto;
-  max-height: 300px; /* optional limit */
-  object-fit: contain;
-  border-radius: 12px;
-}
-    .card h3 {
-      margin: 15px 0 5px;
-      font-size: 1.2rem;
-    }
-    .card p {
-      margin: 5px 0 15px;
-      color: #555;
-    }
-    .card a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: black;
-      color: gold;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-    .about, .contact {
-      padding: 40px 20px;
-      text-align: center;
-      background: #fff;
-      margin: 20px;
-      border-radius: 12px;
-    }
-    .about h2, .contact h2 {
-      margin-bottom: 15px;
-      color: black;
-    }
-    footer {
-      background: #000;
-      color: #aaa;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <!-- ✅ Updated Logo -->
-    <img src="logo.png" alt="Natural Fragrance Logo">
-    <h1>Natural Fragrance</h1>
-    <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </header>
+<section id="products" class="products">
+<!-- Perfume 1 -->
+<div class="card">
+<img src="https://via.placeholder.com/300x220" alt="Red Drift">
+<h3>Red Drift</h3>
+<p>Price: Rs. 1500</p>
+<a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
+</div>
+<!-- Perfume 2 -->
+<div class="card">
+<img src="https://via.placeholder.com/300x220" alt="Executive Aura">
+<h3>Executive Aura</h3>
+<p>Price: Rs. 1800</p>
+<a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
+</div>
+<!-- Perfume 3 -->
+<div class="card">
+<img src="https://via.placeholder.com/300x220" alt="BombShell">
+<h3>BombShell</h3>
+<p>Price: Rs. 2000</p>
+<a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
+</div>
+<!-- Perfume 4 -->
+<div class="card">
+<img src="https://via.placeholder.com/300x220" alt="Oud Al Huda">
+<h3>Oud Al Huda</h3>
+<p>Price: Rs. 1700</p>
+<a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
+</div>
+<!-- Perfume 5 -->
+<div class="card">
+<img src="https://via.placeholder.com/300x220" alt="9:00 PM">
+<h3>9:00 PM</h3>
+<p>Price: Rs. 1600</p>
+<a href="https://wa.me/923322026469?text=Salam%20I%20want%209:00%20PM" target="_blank">Order Now</a>
+</div>
+<!-- Perfume 6 -->
+<div class="card">
+<img src="https://via.placeholder.com/300x220" alt="Royal Amirah">
+<h3>Royal Amirah</h3>
+<p>Price: Rs. 2100</p>
+<a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
+</div>
+</section>
 
-  <section id="products" class="products">
-    <!-- Perfume 1 -->
-    <div class="card">
-  <a href="red-drift.jpg" target="_blank">
-    <img src="red-drift.jpg" alt="Red Drift">
-  </a>
-  <h3>Red Drift</h3>
-  <p>Price: Rs. 2250</p>
-  <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift">Order Now</a>
-</div>
-    <!-- Perfume 2 -->
-    <a href="executive-aura.jpg" target="_blank">
-    <img src="executive-aura.jpg" alt="Executive Aura">
-  </a>
-  <h3>Executive Aura</h3>
-  <p>Price: Rs. 2600</p>
-  <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura">Order Now</a>
-</div>
-    <!-- Perfume 3 -->
-    <a href="bombshell.jpg" target="_blank">
-    <img src="bombshell.jpg" alt="BombShell">
-  </a>
-  <h3>BombShell</h3>
-  <p>Price: Rs. 1700</p>
-  <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell">Order Now</a>
-</div>
-    <!-- Perfume 4 -->
-    <a href="Oud al huda.jpeg" target="_blank">
-    <img src="Oud al huda.jpeg" alt="Oud Al Huda">
-  </a>
-  <h3>Oud Al Huda</h3>
-  <p>Price: Rs. 2250</p>
-  <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda">Order Now</a>
-</div>
-    <!-- Perfume 5 -->
-    <a href="9pm.jpg" target="_blank">
-    <img src="9pm.jpg" alt="9:00 PM">
-  </a>
-  <h3>9:00 PM</h3>
-  <p>Price: Rs. 2350</p>
-  <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM">Order Now</a>
-</div>
-    <!-- Perfume 6 -->
-    <a href="Royal Amirah.jpeg" target="_blank">
-    <img src="Royal Amirah.jpeg" alt="Royal Amirah">
-  </a>
-  <h3>Royal Amirah</h3>
-  <p>Price: Rs. 2000</p>
-  <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah">Order Now</a>
-</div>
-    <!-- Perfume 7 -->
-    <div class="card">
-      <img src="https://via.placeholder.com/300x220" alt="Perfume 7">
-      <h3>Perfume Name 7</h3>
-      <p>Price: Rs. 1900</p>
-     <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Perfume%207">Order Now</a>
-    </div>
-    <!-- Perfume 8 -->
-    <div class="card">
-      <img src="https://via.placeholder.com/300x220" alt="Perfume 8">
-      <h3>Perfume Name 8</h3>
-      <p>Price: Rs. 2200</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Perfume%208">Order Now</a>
-    </div>
-    <!-- Perfume 9 -->
-    <div class="card">
-      <img src="https://via.placeholder.com/300x220" alt="Perfume 9">
-      <h3>Perfume Name 9</h3>
-      <p>Price: Rs. 2500</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Perfume%209">Order Now</a>
-    </div>
-    <!-- Perfume 10 -->
-    <div class="card">
-      <img src="https://via.placeholder.com/300x220" alt="Perfume 10">
-      <h3>Perfume Name 10</h3>
-      <p>Price: Rs. 2300</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Perfume%2010">Order Now</a>
-    </div>
-  </section>
 
-  <section class="about">
-    <h2>Why Choose Us?</h2>
-    <p>✔ Premium Quality Oils</p>
-    <p>✔ Long Lasting Scents</p>
-    <p>✔ Affordable Prices</p>
-    <p>✔ Free Delivery on Bulk Orders</p>
-  </section>
+<section class="about">
+<h2>Why Choose Us?</h2>
+<p>✔ Premium Quality Oils</p>
+<p>✔ Long Lasting Scents</p>
+<p>✔ Affordable Prices</p>
+<p>✔ Free Delivery on Bulk Orders</p>
+</section>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p>WhatsApp: <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Perfume%201">Order Now</a>
-    <p>Instagram: <a href="https://instagram.com/naturalfragrance">@naturalfragrance</a></p>
-  </section>
 
-  <footer>
-    <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
-  </footer>
+<section class="contact">
+<h2>Contact Us</h2>
+<p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
+<p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
+</section>
+
+
+<footer>
+<p>© 2025 Natural Fragrance. All Rights Reserved.</p>
+</footer>
 </body>
 </html>
