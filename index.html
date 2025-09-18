@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Fragrance</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
+      font-family: 'Montserrat', sans-serif;
       background: #fdf6f0;
       color: #222;
     }
@@ -25,23 +27,33 @@
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
+      font-size: 2.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
     }
     header p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-top: 10px;
       color: #ddd;
     }
     .btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 12px 25px;
-      background: black;
-      color: gold;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: black;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 30px;
       font-weight: bold;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .btn:hover {
+      transform: scale(1.07);
+      background: linear-gradient(135deg, #ffd700, #daa520);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     .products {
       display: grid;
@@ -55,6 +67,11 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       padding: 20px;
       text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
     }
     .card img {
       width: 100%;
@@ -65,30 +82,47 @@
     .card h3 {
       margin: 15px 0 5px;
       font-size: 1.2rem;
+      font-weight: 600;
     }
     .card p {
-      margin: 5px 0 15px;
+      margin: 5px 0;
       color: #555;
+    }
+    .stock {
+      color: green;
+      font-weight: bold;
+      margin-bottom: 15px;
     }
     .card a {
       display: inline-block;
-      padding: 10px 20px;
-      background: black;
-      color: gold;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: black;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 30px;
       font-weight: bold;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .card a:hover {
+      transform: scale(1.07);
+      background: linear-gradient(135deg, #ffd700, #daa520);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
     .about, .contact {
       padding: 40px 20px;
       text-align: center;
-      background: #fff;
+      background: #fffaf2;
       margin: 20px;
       border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     }
     .about h2, .contact h2 {
       margin-bottom: 15px;
       color: black;
+      font-weight: 700;
     }
     footer {
       background: #000;
@@ -96,6 +130,7 @@
       text-align: center;
       padding: 15px;
       margin-top: 20px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -115,6 +150,7 @@
       </a>
       <h3>Red Drift</h3>
       <p>Price: Rs. 2299</p>
+      <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
     </div>
     <!-- Perfume 2 -->
@@ -124,6 +160,7 @@
       </a>
       <h3>Executive Aura</h3>
       <p>Price: Rs. 2650</p>
+      <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
     </div>
     <!-- Perfume 3 -->
@@ -133,6 +170,7 @@
       </a>
       <h3>BombShell</h3>
       <p>Price: Rs. 2250</p>
+      <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
     </div>
     <!-- Perfume 4 -->
@@ -142,6 +180,7 @@
       </a>
       <h3>Oud Al Huda</h3>
       <p>Price: Rs. 2300</p>
+      <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
     </div>
     <!-- Perfume 5 -->
@@ -151,6 +190,7 @@
       </a>
       <h3>9:00 PM</h3>
       <p>Price: Rs. 2499</p>
+      <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
     </div>
     <!-- Perfume 6 -->
@@ -160,6 +200,7 @@
       </a>
       <h3>Royal Amirah</h3>
       <p>Price: Rs. 2250</p>
+      <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
     </div>
   </section>
