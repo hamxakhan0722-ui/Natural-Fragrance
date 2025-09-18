@@ -13,32 +13,90 @@
       background: #fdf6f0;
       color: #222;
     }
-    header {
-      background: linear-gradient(135deg, #000, #333);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
+
+    /* ===== HEADER SLIDER WITH CAPTIONS ===== */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
     }
-    header img {
+    .slides {
+      display: flex;
+      width: 300%; /* 3 slides */
+      height: 100%;
+      animation: slide 15s infinite;
+    }
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0%); }
+      25% { transform: translateX(0%); }
+      30% { transform: translateX(-100%); }
+      55% { transform: translateX(-100%); }
+      60% { transform: translateX(-200%); }
+      85% { transform: translateX(-200%); }
+      90% { transform: translateX(0%); }
+      100% { transform: translateX(0%); }
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+    .header-overlay img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       margin-bottom: 15px;
+      border: 2px solid gold;
     }
-    header h1 {
+    .header-overlay h1 {
       margin: 0;
       font-size: 2.8rem;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
-    header p {
-      font-size: 1.1rem;
-      margin-top: 10px;
-      color: #ddd;
+    .header-overlay p.caption {
+      font-size: 1.4rem;
+      margin: 10px 0 20px;
+      color: #f5f5f5;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
+    .caption1 { animation: captions1 15s infinite; }
+    .caption2 { animation: captions2 15s infinite; }
+    .caption3 { animation: captions3 15s infinite; }
+
+    @keyframes captions1 {
+      0%, 25% { opacity: 1; }
+      30%, 100% { opacity: 0; }
+    }
+    @keyframes captions2 {
+      30%, 55% { opacity: 1; }
+      60%, 100% { opacity: 0; }
+    }
+    @keyframes captions3 {
+      60%, 85% { opacity: 1; }
+      90%, 100% { opacity: 0; }
+    }
+
     .btn {
       display: inline-block;
-      margin-top: 20px;
       padding: 12px 28px;
       background: linear-gradient(135deg, #d4af37, #b8860b);
       color: black;
@@ -55,6 +113,8 @@
       background: linear-gradient(135deg, #ffd700, #daa520);
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
+
+    /* ===== PRODUCTS ===== */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -111,6 +171,7 @@
       background: linear-gradient(135deg, #ffd700, #daa520);
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
+
     .about, .contact {
       padding: 40px 20px;
       text-align: center;
@@ -124,6 +185,7 @@
       color: black;
       font-weight: 700;
     }
+
     footer {
       background: #000;
       color: #aaa;
@@ -135,15 +197,26 @@
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Natural Fragrance Logo">
-    <h1>Natural Fragrance</h1>
-    <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </header>
 
+  <!-- ===== HEADER WITH SLIDER + CHANGING CAPTIONS ===== -->
+  <div class="slider">
+    <div class="slides">
+      <img src="img3d1.jpg" alt="3D Perfume 1">
+      <img src="img3d2.jpg" alt="3D Perfume 2">
+      <img src="img3d3.jpg" alt="3D Perfume 3">
+    </div>
+    <div class="header-overlay">
+      <img src="logo.png" alt="Natural Fragrance Logo">
+      <h1>Natural Fragrance</h1>
+      <p class="caption caption1">Luxury That Lasts All Day</p>
+      <p class="caption caption2">Captivate Your Senses</p>
+      <p class="caption caption3">Elegance in Every Smell</p>
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </div>
+
+  <!-- ===== PRODUCTS SECTION ===== -->
   <section id="products" class="products">
-    <!-- Perfume 1 -->
     <div class="card">
       <a href="red-drift.jpg" target="_blank">
         <img src="red-drift.jpg" alt="Red Drift">
@@ -153,7 +226,6 @@
       <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 2 -->
     <div class="card">
       <a href="Executive Aura.jpeg" target="_blank">
         <img src="Executive Aura.jpeg" alt="Executive Aura">
@@ -163,7 +235,6 @@
       <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 3 -->
     <div class="card">
       <a href="bombshell.jpg" target="_blank">
         <img src="bombshell.jpg" alt="BombShell">
@@ -173,7 +244,6 @@
       <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 4 -->
     <div class="card">
       <a href="Oud Al Huda.jpeg" target="_blank">
         <img src="Oud Al Huda.jpeg" alt="Oud Al Huda">
@@ -183,7 +253,6 @@
       <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 5 -->
     <div class="card">
       <a href="9pm.jpg" target="_blank">
         <img src="9pm.jpg" alt="9:00 PM">
@@ -193,7 +262,6 @@
       <p class="stock">✔ In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
     </div>
-    <!-- Perfume 6 -->
     <div class="card">
       <a href="Royal Amirah.jpeg" target="_blank">
         <img src="Royal Amirah.jpeg" alt="Royal Amirah">
