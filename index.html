@@ -4,20 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Fragrance</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Global Styles */
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      background: #fdf6f0;
+      font-family: 'Poppins', sans-serif;
+      background: #fdfbf7;
       color: #222;
     }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
 
-    /* ========== SLIDER ========== */
+    /* HEADER with Slider */
     .slider {
       position: relative;
-      width: 100%;
-      height: 90vh;
       overflow: hidden;
+      height: 90vh;
+      width: 100%;
     }
     .slide {
       position: absolute;
@@ -33,18 +39,20 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(70%);
     }
     .caption {
       position: absolute;
       bottom: 20%;
       left: 50%;
       transform: translateX(-50%);
-      color: white;
       font-size: 2.5rem;
-      font-weight: bold;
+      color: white;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-      text-align: center;
+      background: rgba(0,0,0,0.3);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
     }
 
     /* Navigation Arrows */
@@ -56,12 +64,11 @@
       padding: 12px;
       color: white;
       font-weight: bold;
-      font-size: 30px;
+      font-size: 28px;
       user-select: none;
-      transition: 0.3s;
       background: rgba(0,0,0,0.4);
       border-radius: 50%;
-      z-index: 15;
+      transition: 0.3s;
     }
     .prev:hover, .next:hover {
       background: rgba(0,0,0,0.7);
@@ -75,7 +82,6 @@
       position: absolute;
       bottom: 15px;
       width: 100%;
-      z-index: 15;
     }
     .dot {
       cursor: pointer;
@@ -91,65 +97,44 @@
       background-color: gold;
     }
 
-    header {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      text-align: center;
-      padding: 20px;
-      z-index: 20;
-      color: white;
-    }
-    header img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 2px solid white;
-    }
-    header h1 {
-      margin: 10px 0 0;
-      font-size: 2.2rem;
-      letter-spacing: 2px;
-    }
-    header p {
-      font-size: 1.1rem;
-      margin-top: 5px;
-      color: #eee;
-    }
-    .btn {
+    /* Buttons */
+    .btn, .card a {
       display: inline-block;
       margin-top: 15px;
-      padding: 12px 30px;
-      background: gold;
-      color: black;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-    .btn:hover {
-      background: black;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #000, #444);
       color: gold;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .btn:hover, .card a:hover {
+      background: linear-gradient(135deg, gold, #b8860b);
+      color: black;
+      transform: translateY(-2px);
     }
 
-    /* ========== PRODUCTS ========== */
+    /* Products */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 60px 20px;
+      gap: 25px;
+      padding: 50px 20px;
     }
     .card {
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       padding: 20px;
       text-align: center;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
     .card img {
       width: 100%;
@@ -160,52 +145,51 @@
     .card h3 {
       margin: 15px 0 5px;
       font-size: 1.3rem;
-      font-weight: bold;
+      font-family: 'Playfair Display', serif;
     }
     .card p {
       margin: 5px 0;
       color: #555;
+      font-size: 0.95rem;
     }
     .stock {
       color: green;
       font-weight: bold;
       margin-bottom: 12px;
     }
-    .order-btn {
-      display: inline-block;
-      padding: 12px 25px;
-      background: black;
-      color: gold;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-    .order-btn:hover {
-      background: gold;
-      color: black;
-    }
 
-    /* ========== ABOUT + CONTACT ========== */
+    /* About + Contact */
     .about, .contact {
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
       background: #fff;
       margin: 20px;
       border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     }
     .about h2, .contact h2 {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       color: black;
+      font-family: 'Playfair Display', serif;
     }
 
-    /* ========== FOOTER ========== */
+    /* Footer */
     footer {
       background: #000;
       color: #aaa;
       text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Fixes */
+    @media (max-width: 768px) {
+      .slider { height: 60vh; }
+      .caption { font-size: 1.4rem; bottom: 15%; padding: 5px 10px; }
+      .prev, .next { font-size: 20px; padding: 8px; }
+      header h1 { font-size: 1.6rem; }
+      .btn { padding: 10px 18px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -213,7 +197,6 @@
 
   <!-- SLIDER -->
   <div class="slider">
-    <!-- Slides -->
     <div class="slide active">
       <img src="Slider1.jpg" alt="Luxury Perfume 1">
       <div class="caption">Elegance in Every Drop</div>
@@ -227,7 +210,7 @@
       <div class="caption">A Touch of Luxury</div>
     </div>
 
-    <!-- Navigation Arrows -->
+    <!-- Arrows -->
     <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="next" onclick="changeSlide(1)">&#10095;</a>
 
@@ -239,57 +222,49 @@
     </div>
   </div>
 
-  <!-- HEADER ON TOP OF SLIDER -->
-  <header>
-    <img src="logo.png" alt="Natural Fragrance Logo">
-    <h1>Natural Fragrance</h1>
-    <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
-    <a href="#products" class="btn">Shop Now</a>
-  </header>
-
   <!-- PRODUCTS -->
   <section id="products" class="products">
     <div class="card">
       <img src="red-drift.jpg" alt="Red Drift">
       <h3>Red Drift</h3>
+      <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2299</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank" class="order-btn">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
     <div class="card">
       <img src="Executive Aura.jpeg" alt="Executive Aura">
       <h3>Executive Aura</h3>
+      <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2650</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank" class="order-btn">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
     <div class="card">
       <img src="bombshell.jpg" alt="BombShell">
       <h3>BombShell</h3>
+      <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2250</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank" class="order-btn">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
     <div class="card">
       <img src="Oud Al Huda.jpeg" alt="Oud Al Huda">
       <h3>Oud Al Huda</h3>
+      <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2300</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank" class="order-btn">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
     <div class="card">
       <img src="9pm.jpg" alt="9:00 PM">
       <h3>9:00 PM</h3>
+      <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2499</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank" class="order-btn">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
     <div class="card">
       <img src="Royal Amirah.jpeg" alt="Royal Amirah">
       <h3>Royal Amirah</h3>
+      <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2250</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank" class="order-btn">Order Now</a>
+      <a href="#">Order Now</a>
     </div>
   </section>
 
@@ -309,15 +284,17 @@
     <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
   </footer>
 
+  <!-- JAVASCRIPT -->
   <script>
     let slides = document.querySelectorAll(".slide");
     let dots = document.querySelectorAll(".dot");
     let index = 0;
-    let slideInterval = setInterval(nextSlide, 4000); // Auto change every 4 sec
+    let slideInterval = setInterval(nextSlide, 4000);
 
     function showSlide(n) {
       slides.forEach((slide, i) => {
@@ -328,23 +305,19 @@
       dots[n].classList.add("active");
       index = n;
     }
-
     function changeSlide(step) {
       index = (index + step + slides.length) % slides.length;
       showSlide(index);
       resetInterval();
     }
-
     function currentSlide(n) {
       showSlide(n);
       resetInterval();
     }
-
     function nextSlide() {
       index = (index + 1) % slides.length;
       showSlide(index);
     }
-
     function resetInterval() {
       clearInterval(slideInterval);
       slideInterval = setInterval(nextSlide, 4000);
