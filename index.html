@@ -9,127 +9,128 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: #222;
+      padding: 0;
+      box-sizing: border-box;
     }
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fdf6f0;
+      color: #222;
+      line-height: 1.6;
     }
 
-    /* Header / Hero */
+    /* Header with Slider */
     header {
       position: relative;
       height: 100vh;
       overflow: hidden;
+      text-align: center;
+      color: white;
     }
-    .slides {
-      display: flex;
-      width: 300%;
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      transition: transform 1s ease;
     }
     .slide {
-      width: 100%;
-      height: 100vh;
-      flex-shrink: 0;
-      position: relative;
-    }
-    .slide img {
+      position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* fix zoom */
-      filter: brightness(65%);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+    }
+    .slide.active {
+      opacity: 1;
     }
     .caption {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #f5d76e;
-    }
-    .caption h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .caption p {
-      font-size: 1.1rem;
-    }
-
-    /* Overlay Content */
-    .hero-content {
-      position: absolute;
-      top: 20%;
+      bottom: 20%;
       left: 50%;
       transform: translateX(-50%);
-      text-align: center;
-      color: #fff;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #f5d67b;
     }
-    .hero-content img {
+    .slider-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      cursor: pointer;
+    }
+    .dot.active {
+      background: gold;
+    }
+
+    /* Header Content */
+    .header-content {
+      position: relative;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .header-content img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       margin-bottom: 15px;
     }
-    .hero-content h1 {
-      margin: 0;
+    .header-content h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
-    .hero-content p {
+    .header-content p {
       font-size: 1.2rem;
-      margin-top: 8px;
-      color: #f5d76e;
+      margin-bottom: 20px;
+      color: #eee;
     }
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
+      padding: 12px 28px;
       background: linear-gradient(135deg, #000, #333);
-      color: #f5d76e;
+      color: gold;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
+      border: 2px solid gold;
       transition: all 0.3s ease;
     }
     .btn:hover {
-      background: #f5d76e;
-      color: #000;
-    }
-
-    /* Dots */
-    .dots {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-    }
-    .dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin: 0 5px;
-      background: #f5d76e;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    .active {
-      background: #fff;
+      background: gold;
+      color: black;
+      border-color: black;
     }
 
     /* Products */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+      gap: 20px;
       padding: 60px 20px;
     }
     .card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       padding: 20px;
       text-align: center;
       transition: transform 0.3s ease;
@@ -140,43 +141,43 @@
     .card img {
       width: 100%;
       height: 240px;
-      object-fit: contain; /* stop cutting */
+      object-fit: cover;
       border-radius: 12px;
     }
     .card h3 {
       margin: 15px 0 5px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
     }
     .card p {
       margin: 5px 0;
-    }
-    .price {
-      font-weight: 600;
-      margin: 5px 0;
+      color: #555;
     }
     .stock {
       color: green;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
     .card a {
       display: inline-block;
-      padding: 10px 22px;
+      padding: 10px 24px;
       background: linear-gradient(135deg, #000, #333);
-      color: #f5d76e;
+      color: gold;
       text-decoration: none;
       border-radius: 25px;
       font-weight: bold;
+      border: 2px solid gold;
       transition: all 0.3s ease;
     }
     .card a:hover {
-      background: #f5d76e;
-      color: #000;
+      background: gold;
+      color: black;
+      border-color: black;
     }
 
-    /* About + Contact */
+    /* About & Contact */
     .about, .contact {
-      padding: 50px 20px;
+      padding: 40px 20px;
       text-align: center;
       background: #fff;
       margin: 20px;
@@ -185,60 +186,43 @@
     .about h2, .contact h2 {
       margin-bottom: 15px;
       color: black;
+      font-family: 'Playfair Display', serif;
     }
 
+    /* Footer */
     footer {
       background: #000;
       color: #aaa;
       text-align: center;
       padding: 15px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .caption h2 { font-size: 1.8rem; }
-      .hero-content h1 { font-size: 2rem; }
-      .hero-content p { font-size: 1rem; }
+      margin-top: 20px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-
-  <!-- Header with Slider -->
+  <!-- HEADER -->
   <header>
-    <div class="slides">
-      <div class="slide">
-        <img src="Slider1.jpg" alt="Perfume Slide 1">
-        <div class="caption">
-          <h2>Luxury in Every Drop</h2>
-          <p>Discover timeless fragrances</p>
-        </div>
+    <!-- Slider -->
+    <div class="slider">
+      <div class="slide active" style="background-image: url('Slider1.jpg');">
+        <div class="caption">Luxury in Every Drop</div>
       </div>
-      <div class="slide">
-        <img src="Slider2.jpg" alt="Perfume Slide 2">
-        <div class="caption">
-          <h2>Signature Collection</h2>
-          <p>Premium quality, affordable luxury</p>
-        </div>
+      <div class="slide" style="background-image: url('Slider2.jpg');">
+        <div class="caption">Long Lasting Impressions</div>
       </div>
-      <div class="slide">
-        <img src="Slider3.jpg" alt="Perfume Slide 3">
-        <div class="caption">
-          <h2>Natural Fragrance</h2>
-          <p>Redefining elegance</p>
-        </div>
+      <div class="slide" style="background-image: url('Slider3.jpg');">
+        <div class="caption">Affordable Premium Fragrance</div>
       </div>
     </div>
-
-    <!-- Dots -->
-    <div class="dots">
-      <span class="dot" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
+    <div class="slider-controls">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
     </div>
 
-    <!-- Overlay -->
-    <div class="hero-content">
+    <!-- Header Content -->
+    <div class="header-content">
       <img src="logo.png" alt="Natural Fragrance Logo">
       <h1>Natural Fragrance</h1>
       <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
@@ -246,53 +230,58 @@
     </div>
   </header>
 
-  <!-- Products Section -->
+  <!-- PRODUCTS -->
   <section id="products" class="products">
     <div class="card">
       <a href="red-drift.jpg" target="_blank"><img src="red-drift.jpg" alt="Red Drift"></a>
       <h3>Red Drift</h3>
-      <p class="price">Price: Rs. 2299</p>
+      <p>Price: Rs. 2299</p>
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
     </div>
+
     <div class="card">
       <a href="Executive Aura.jpeg" target="_blank"><img src="Executive Aura.jpeg" alt="Executive Aura"></a>
       <h3>Executive Aura</h3>
-      <p class="price">Price: Rs. 2650</p>
+      <p>Price: Rs. 2650</p>
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
     </div>
+
     <div class="card">
       <a href="bombshell.jpg" target="_blank"><img src="bombshell.jpg" alt="BombShell"></a>
       <h3>BombShell</h3>
-      <p class="price">Price: Rs. 2250</p>
+      <p>Price: Rs. 2250</p>
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
     </div>
+
     <div class="card">
       <a href="Oud Al Huda.jpeg" target="_blank"><img src="Oud Al Huda.jpeg" alt="Oud Al Huda"></a>
       <h3>Oud Al Huda</h3>
-      <p class="price">Price: Rs. 2300</p>
+      <p>Price: Rs. 2300</p>
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
     </div>
+
     <div class="card">
       <a href="9pm.jpg" target="_blank"><img src="9pm.jpg" alt="9:00 PM"></a>
       <h3>9:00 PM</h3>
-      <p class="price">Price: Rs. 2499</p>
+      <p>Price: Rs. 2499</p>
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
     </div>
+
     <div class="card">
       <a href="Royal Amirah.jpeg" target="_blank"><img src="Royal Amirah.jpeg" alt="Royal Amirah"></a>
       <h3>Royal Amirah</h3>
-      <p class="price">Price: Rs. 2250</p>
+      <p>Price: Rs. 2250</p>
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ABOUT -->
   <section class="about">
     <h2>Why Choose Us?</h2>
     <p>✔ Premium Quality Oils</p>
@@ -301,43 +290,46 @@
     <p>✔ Free Delivery on Bulk Orders</p>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section class="contact">
     <h2>Contact Us</h2>
     <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
     <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
   </footer>
 
+  <!-- SLIDER SCRIPT -->
   <script>
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let index = 0;
 
-    function showSlides() {
-      slides.forEach((s, i) => {
-        s.style.display = "none";
-        dots[i].classList.remove("active");
+    function showSlide(i) {
+      slides.forEach((s, idx) => {
+        s.classList.remove('active');
+        dots[idx].classList.remove('active');
       });
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
-      dots[slideIndex - 1].classList.add("active");
-      setTimeout(showSlides, 5000);
+      slides[i].classList.add('active');
+      dots[i].classList.add('active');
+      index = i;
     }
-    function currentSlide(n) {
-      slideIndex = n;
-      slides.forEach((s, i) => {
-        s.style.display = "none";
-        dots[i].classList.remove("active");
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
       });
-      slides[slideIndex].style.display = "block";
-      dots[slideIndex].classList.add("active");
-    }
-    showSlides();
+    });
+
+    setInterval(nextSlide, 5000); // auto every 5s
   </script>
 </body>
 </html>
