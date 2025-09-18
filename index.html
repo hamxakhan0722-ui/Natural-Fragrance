@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Fragrance</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* General Styles */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      color: #333;
       background: #fff;
+      color: #222;
     }
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
     }
 
-    /* Header / Slider */
-    .hero {
+    /* Header / Hero */
+    header {
       position: relative;
       height: 100vh;
-      width: 100%;
       overflow: hidden;
     }
-
     .slides {
       display: flex;
       width: 300%;
+      height: 100%;
       transition: transform 1s ease;
     }
-
     .slide {
-      position: relative;
       width: 100%;
       height: 100vh;
       flex-shrink: 0;
+      position: relative;
     }
-
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;  /* Fix zoom issue */
-      filter: brightness(60%);
+      object-fit: cover; /* fix zoom */
+      filter: brightness(65%);
     }
-
     .caption {
       position: absolute;
       top: 50%;
@@ -55,18 +50,16 @@
       transform: translate(-50%, -50%);
       text-align: center;
       color: #f5d76e;
-      font-family: 'Playfair Display', serif;
     }
-
     .caption h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
     .caption p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
-    /* Hero Content Overlay */
+    /* Overlay Content */
     .hero-content {
       position: absolute;
       top: 20%;
@@ -75,32 +68,35 @@
       text-align: center;
       color: #fff;
     }
-    .hero-content img.logo {
-      max-width: 120px;
-      margin-bottom: 1rem;
+    .hero-content img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
     }
     .hero-content h1 {
+      margin: 0;
       font-size: 2.8rem;
-      margin-bottom: 0.5rem;
     }
-    .hero-content .tagline {
+    .hero-content p {
       font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+      margin-top: 8px;
       color: #f5d76e;
     }
-    .btn-order {
-      background: black;
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #000, #333);
       color: #f5d76e;
-      border: 2px solid #f5d76e;
-      padding: 12px 28px;
-      font-size: 1rem;
-      border-radius: 30px;
       text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
       transition: all 0.3s ease;
     }
-    .btn-order:hover {
+    .btn:hover {
       background: #f5d76e;
-      color: black;
+      color: #000;
     }
 
     /* Dots */
@@ -112,8 +108,8 @@
     }
     .dot {
       display: inline-block;
-      height: 12px;
       width: 12px;
+      height: 12px;
       margin: 0 5px;
       background: #f5d76e;
       border-radius: 50%;
@@ -123,121 +119,113 @@
       background: #fff;
     }
 
-    /* Products Section */
-    #products {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    #products h2 {
-      font-size: 2.2rem;
-      margin-bottom: 40px;
-    }
-    .product-grid {
+    /* Products */
+    .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: auto;
+      gap: 25px;
+      padding: 60px 20px;
     }
-    .product {
+    .card {
       background: #fff;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 20px;
+      text-align: center;
       transition: transform 0.3s ease;
     }
-    .product:hover {
+    .card:hover {
       transform: translateY(-5px);
     }
-    .product img {
+    .card img {
       width: 100%;
-      height: 280px;
-      object-fit: contain; /* No cut */
+      height: 240px;
+      object-fit: contain; /* stop cutting */
       border-radius: 12px;
     }
-    .product h3 {
-      margin: 15px 0 8px;
-      font-size: 1.4rem;
+    .card h3 {
+      margin: 15px 0 5px;
+      font-size: 1.3rem;
     }
-    .product p.price {
-      font-weight: 500;
-      margin: 0;
+    .card p {
+      margin: 5px 0;
     }
-    .product p.stock {
+    .price {
+      font-weight: 600;
+      margin: 5px 0;
+    }
+    .stock {
       color: green;
       font-size: 0.9rem;
       margin-bottom: 12px;
     }
-    .btn-cart {
-      background: black;
-      color: #f5d76e;
-      border: 2px solid #f5d76e;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
+    .card a {
       display: inline-block;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, #000, #333);
+      color: #f5d76e;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: all 0.3s ease;
     }
-    .btn-cart:hover {
+    .card a:hover {
       background: #f5d76e;
+      color: #000;
+    }
+
+    /* About + Contact */
+    .about, .contact {
+      padding: 50px 20px;
+      text-align: center;
+      background: #fff;
+      margin: 20px;
+      border-radius: 12px;
+    }
+    .about h2, .contact h2 {
+      margin-bottom: 15px;
       color: black;
     }
 
-    /* Contact Section */
-    #contact {
-      padding: 60px 20px;
+    footer {
+      background: #000;
+      color: #aaa;
       text-align: center;
-      background: #f9f9f9;
-    }
-    #contact h2 {
-      margin-bottom: 20px;
-    }
-    #contact p {
-      margin: 6px 0;
+      padding: 15px;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .caption h2 {
-        font-size: 2rem;
-      }
-      .caption p {
-        font-size: 1rem;
-      }
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .hero-content .tagline {
-        font-size: 1rem;
-      }
+      .caption h2 { font-size: 1.8rem; }
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content p { font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section with Slider -->
-  <header class="hero">
+  <!-- Header with Slider -->
+  <header>
     <div class="slides">
       <div class="slide">
-        <img src="Slider1.jpg" alt="Luxury Perfume 1">
+        <img src="Slider1.jpg" alt="Perfume Slide 1">
         <div class="caption">
-          <h2>Natural Fragrance</h2>
-          <p>Experience the Essence of Luxury</p>
+          <h2>Luxury in Every Drop</h2>
+          <p>Discover timeless fragrances</p>
         </div>
       </div>
       <div class="slide">
-        <img src="Slider2.jpg" alt="Luxury Perfume 2">
-        <div class="caption">
-          <h2>Timeless Elegance</h2>
-          <p>Crafted for Your Unique Personality</p>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="Slider3.jpg" alt="Luxury Perfume 3">
+        <img src="Slider2.jpg" alt="Perfume Slide 2">
         <div class="caption">
           <h2>Signature Collection</h2>
-          <p>Redefining Premium Fragrances</p>
+          <p>Premium quality, affordable luxury</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="Slider3.jpg" alt="Perfume Slide 3">
+        <div class="caption">
+          <h2>Natural Fragrance</h2>
+          <p>Redefining elegance</p>
         </div>
       </div>
     </div>
@@ -249,80 +237,107 @@
       <span class="dot" onclick="currentSlide(2)"></span>
     </div>
 
-    <!-- Overlay Hero Content -->
+    <!-- Overlay -->
     <div class="hero-content">
-      <img src="logo.png" alt="Natural Fragrance Logo" class="logo">
+      <img src="logo.png" alt="Natural Fragrance Logo">
       <h1>Natural Fragrance</h1>
-      <p class="tagline">Luxury in Every Drop</p>
-      <a href="#products" class="btn-order">Shop Now</a>
+      <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
+      <a href="#products" class="btn">Shop Now</a>
     </div>
   </header>
 
   <!-- Products Section -->
-  <section id="products">
-    <h2>Our Collection</h2>
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product">
-        <img src="product1.jpg" alt="Perfume 1">
-        <h3>Perfume Name 1</h3>
-        <p class="price">PKR 2500</p>
-        <p class="stock">In Stock</p>
-        <a href="https://wa.me/923333769032" class="btn-cart">Order Now</a>
-      </div>
-      <!-- Product 2 -->
-      <div class="product">
-        <img src="product2.jpg" alt="Perfume 2">
-        <h3>Perfume Name 2</h3>
-        <p class="price">PKR 3000</p>
-        <p class="stock">In Stock</p>
-        <a href="https://wa.me/923333769032" class="btn-cart">Order Now</a>
-      </div>
-      <!-- Product 3 -->
-      <div class="product">
-        <img src="product3.jpg" alt="Perfume 3">
-        <h3>Perfume Name 3</h3>
-        <p class="price">PKR 4000</p>
-        <p class="stock">In Stock</p>
-        <a href="https://wa.me/923333769032" class="btn-cart">Order Now</a>
-      </div>
+  <section id="products" class="products">
+    <div class="card">
+      <a href="red-drift.jpg" target="_blank"><img src="red-drift.jpg" alt="Red Drift"></a>
+      <h3>Red Drift</h3>
+      <p class="price">Price: Rs. 2299</p>
+      <p class="stock">In Stock</p>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
+    </div>
+    <div class="card">
+      <a href="Executive Aura.jpeg" target="_blank"><img src="Executive Aura.jpeg" alt="Executive Aura"></a>
+      <h3>Executive Aura</h3>
+      <p class="price">Price: Rs. 2650</p>
+      <p class="stock">In Stock</p>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
+    </div>
+    <div class="card">
+      <a href="bombshell.jpg" target="_blank"><img src="bombshell.jpg" alt="BombShell"></a>
+      <h3>BombShell</h3>
+      <p class="price">Price: Rs. 2250</p>
+      <p class="stock">In Stock</p>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
+    </div>
+    <div class="card">
+      <a href="Oud Al Huda.jpeg" target="_blank"><img src="Oud Al Huda.jpeg" alt="Oud Al Huda"></a>
+      <h3>Oud Al Huda</h3>
+      <p class="price">Price: Rs. 2300</p>
+      <p class="stock">In Stock</p>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
+    </div>
+    <div class="card">
+      <a href="9pm.jpg" target="_blank"><img src="9pm.jpg" alt="9:00 PM"></a>
+      <h3>9:00 PM</h3>
+      <p class="price">Price: Rs. 2499</p>
+      <p class="stock">In Stock</p>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
+    </div>
+    <div class="card">
+      <a href="Royal Amirah.jpeg" target="_blank"><img src="Royal Amirah.jpeg" alt="Royal Amirah"></a>
+      <h3>Royal Amirah</h3>
+      <p class="price">Price: Rs. 2250</p>
+      <p class="stock">In Stock</p>
+      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>WhatsApp: +92 333 3769032</p>
-    <p>Email: info.Zauq@gmail.com</p>
+  <!-- About -->
+  <section class="about">
+    <h2>Why Choose Us?</h2>
+    <p>✔ Premium Quality Oils</p>
+    <p>✔ Long Lasting Scents</p>
+    <p>✔ Affordable Prices</p>
+    <p>✔ Free Delivery on Bulk Orders</p>
   </section>
 
-  <!-- JavaScript for Slider -->
+  <!-- Contact -->
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
+    <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
+  </footer>
+
   <script>
     let slideIndex = 0;
-    showSlides();
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
 
     function showSlides() {
-      let slides = document.querySelectorAll(".slide");
-      let dots = document.querySelectorAll(".dot");
-
       slides.forEach((s, i) => {
         s.style.display = "none";
         dots[i].classList.remove("active");
       });
-
       slideIndex++;
       if (slideIndex > slides.length) slideIndex = 1;
-
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].classList.add("active");
-
-      setTimeout(showSlides, 5000); // Auto change every 5s
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].classList.add("active");
+      setTimeout(showSlides, 5000);
     }
-
     function currentSlide(n) {
-      slideIndex = n + 1;
-      showSlides();
+      slideIndex = n;
+      slides.forEach((s, i) => {
+        s.style.display = "none";
+        dots[i].classList.remove("active");
+      });
+      slides[slideIndex].style.display = "block";
+      dots[slideIndex].classList.add("active");
     }
+    showSlides();
   </script>
 </body>
 </html>
