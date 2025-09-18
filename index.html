@@ -1,275 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Natural Fragrance</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Global Styles */
-    body {
-      margin: 0;
+    :root{
+      --bg: #fdfbf7;
+      --text: #111;
+      --muted: #666;
+      --gold-1: #d4af37;
+      --gold-2: #b8860b;
+      --black: #000;
+      --card-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      --radius: 14px;
+    }
+
+    /* Reset + base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
       font-family: 'Poppins', sans-serif;
-      background: #fdfbf7;
-      color: #222;
+      background: var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-    }
+    h1,h2,h3{font-family:'Playfair Display', serif;margin:0}
 
-    /* HEADER with Slider */
-    .slider {
+    /* ===== SLIDER (hero) ===== */
+    .hero {
       position: relative;
-      overflow: hidden;
-      height: 90vh;
-      width: 100%;
+      width:100%;
+      overflow:hidden;
+      /* desktop height larger, mobile adjusted via media query */
+      height:90vh;
+      background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25));
     }
+
     .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity 0.9s ease-in-out;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background-color: #111; /* fallback if image missing */
     }
-    .slide.active {
-      opacity: 1;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .caption {
-      position: absolute;
-      bottom: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2.5rem;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-      background: rgba(0,0,0,0.3);
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
+    .slide.active{opacity:1; z-index:1}
+
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+      filter: brightness(0.62);
     }
 
-    /* Navigation Arrows */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding: 12px;
-      color: white;
-      font-weight: bold;
-      font-size: 28px;
-      user-select: none;
-      background: rgba(0,0,0,0.4);
-      border-radius: 50%;
-      transition: 0.3s;
+    /* caption overlay centered lower */
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
     }
-    .prev:hover, .next:hover {
-      background: rgba(0,0,0,0.7);
+    .header-content{
+      text-align:center;
+      pointer-events:auto;
+      padding:18px;
+      color: #fff;
     }
-    .prev { left: 20px; }
-    .next { right: 20px; }
-
-    /* Dots */
-    .dots {
-      text-align: center;
-      position: absolute;
-      bottom: 15px;
-      width: 100%;
+    .brand-top{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
     }
-    .dot {
-      cursor: pointer;
-      height: 12px;
-      width: 12px;
-      margin: 0 4px;
-      background-color: rgba(255,255,255,0.6);
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
+    .brand-top img.logo{
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      border:3px solid rgba(212,175,55,0.95);
+      object-fit:cover;
+      background:#fff;
     }
-    .dot.active {
-      background-color: gold;
+    .brand-top h1{
+      font-size:2.2rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color: #fff;
+      margin-top:6px;
     }
-
-    /* Buttons */
-    .btn, .card a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 25px;
-      background: linear-gradient(135deg, #000, #444);
-      color: gold;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    .btn:hover, .card a:hover {
-      background: linear-gradient(135deg, gold, #b8860b);
-      color: black;
-      transform: translateY(-2px);
+    .brand-top p.tag{
+      margin:6px 0 0;
+      color: #fff;
+      opacity:0.95;
+      font-size:1rem;
     }
 
-    /* Products */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      padding: 50px 20px;
+    .hero-cta{
+      margin-top:16px;
     }
-    .card {
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .btn-primary{
+      display:inline-block;
+      padding:12px 28px;
+      border-radius:28px;
+      background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(36,36,36,1) 60%, rgba(212,175,55,0.08) 100%);
+      color: var(--gold-1);
+      text-decoration:none;
+      font-weight:600;
+      letter-spacing:1px;
+      border: 1px solid rgba(212,175,55,0.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      transition: transform .22s ease, background .22s ease, color .22s ease;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    .btn-primary:hover{
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-2));
+      color: #000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
     }
-    .card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
+
+    /* Caption text on slides (changes with slides) */
+    .slide-caption{
+      position:absolute;
+      z-index:6;
+      bottom:18%;
+      left:50%;
+      transform:translateX(-50%);
+      color:#fff;
+      font-family:'Playfair Display', serif;
+      font-size:2.4rem;
+      text-align:center;
+      padding:12px 22px;
+      border-radius:8px;
+      background: rgba(0,0,0,0.35);
+      text-shadow:0 6px 20px rgba(0,0,0,0.6);
+      pointer-events:none;
+      transition:opacity .4s ease;
     }
-    .card h3 {
-      margin: 15px 0 5px;
-      font-size: 1.3rem;
-      font-family: 'Playfair Display', serif;
+
+    /* Arrows & dots */
+    .arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:12;
+      background: rgba(0,0,0,0.45);
+      color:#fff;
+      width:48px;height:48px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:26px;cursor:pointer;
+      user-select:none;
+      transition:background .18s ease, transform .12s ease;
     }
-    .card p {
-      margin: 5px 0;
-      color: #555;
-      font-size: 0.95rem;
+    .arrow:hover{background: rgba(0,0,0,0.75); transform:translateY(-50%) scale(1.06)}
+    .arrow.left{left:18px}
+    .arrow.right{right:18px}
+
+    .dots{
+      position:absolute;
+      bottom:12px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:8px;
+      z-index:12;
     }
-    .stock {
-      color: green;
-      font-weight: bold;
-      margin-bottom: 12px;
+    .dot{
+      width:12px;height:12px;border-radius:50%;
+      background: rgba(255,255,255,0.55);
+      cursor:pointer; transition: all .2s ease;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    }
+    .dot.active{background: var(--gold-1); transform:scale(1.12)}
+
+    /* ===== PRODUCTS (kept original product names & WhatsApp links) ===== */
+    .products{
+      max-width:1200px;
+      margin:-80px auto 40px; /* pull up below hero for integrated feel */
+      padding: 28px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap:22px;
+      z-index:3;
+      position:relative;
+    }
+    .card{
+      background:#fff;border-radius: var(--radius); padding:16px; text-align:center;
+      box-shadow: var(--card-shadow); transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .card:hover{transform:translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.12)}
+    .card img{width:100%; height:220px; object-fit:cover; border-radius:12px}
+    .card h3{font-size:1.15rem; margin:12px 0 6px; font-family:'Playfair Display', serif}
+    .card p{margin:6px 0;color:var(--muted)}
+    .stock{color:green; font-weight:600; margin-bottom:8px}
+
+    .order{
+      display:inline-block; padding:10px 22px; border-radius:30px; text-decoration:none;
+      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(40,40,40,1) 100%);
+      color: var(--gold-1); font-weight:600; border: 1px solid rgba(212,175,55,0.06);
+      transition:all .18s ease; box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+    }
+    .order:hover{
+      background: linear-gradient(135deg,var(--gold-1),var(--gold-2));
+      color:#000; transform: translateY(-3px);
     }
 
     /* About + Contact */
-    .about, .contact {
-      padding: 50px 20px;
-      text-align: center;
-      background: #fff;
-      margin: 20px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    .section{
+      max-width:1100px;margin:28px auto;padding:26px;border-radius:12px;background:#fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
-    .about h2, .contact h2 {
-      margin-bottom: 20px;
-      color: black;
-      font-family: 'Playfair Display', serif;
-    }
+    .section h2{font-family:'Playfair Display', serif; margin-bottom:10px}
+    .section p{color:var(--muted); margin:6px 0}
 
     /* Footer */
-    footer {
-      background: #000;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      font-size: 0.9rem;
+    footer{background:#000;color:#bbb;padding:18px;text-align:center;margin-top:26px}
+
+    /* ===== RESPONSIVE (mobile Android fixes) ===== */
+    @media (max-width: 1024px){
+      .hero{height:72vh}
+      .slide-caption{font-size:1.6rem}
+    }
+    @media (max-width: 768px){
+      .hero{height:56vh}
+      .brand-top img.logo{width:86px;height:86px}
+      .brand-top h1{font-size:1.3rem}
+      .brand-top p.tag{font-size:0.9rem}
+      .slide-caption{font-size:1.15rem; bottom:14%;}
+      .arrow{width:40px;height:40px;font-size:20px}
+      .dot{width:10px;height:10px}
+      .products{margin-top: -40px; padding:14px; gap:14px}
+      .card img{height:180px}
+      .order{padding:8px 18px}
     }
 
-    /* Responsive Fixes */
-    @media (max-width: 768px) {
-      .slider { height: 60vh; }
-      .caption { font-size: 1.4rem; bottom: 15%; padding: 5px 10px; }
-      .prev, .next { font-size: 20px; padding: 8px; }
-      header h1 { font-size: 1.6rem; }
-      .btn { padding: 10px 18px; font-size: 0.9rem; }
+    /* ensure hero content sits above product grid visually on small screens */
+    @media (max-width:480px){
+      .hero{height:52vh}
+      .slide-caption{font-size:1rem; bottom:12%}
     }
   </style>
 </head>
 <body>
 
-  <!-- SLIDER -->
-  <div class="slider">
-    <div class="slide active">
-      <img src="Slider1.jpg" alt="Luxury Perfume 1">
-      <div class="caption">Elegance in Every Drop</div>
-    </div>
-    <div class="slide">
-      <img src="Slider2.jpg" alt="Luxury Perfume 2">
-      <div class="caption">Timeless Fragrance</div>
-    </div>
-    <div class="slide">
-      <img src="Slider3.jpg" alt="Luxury Perfume 3">
-      <div class="caption">A Touch of Luxury</div>
+  <!-- HERO / SLIDER -->
+  <main class="hero" aria-roledescription="carousel">
+    <!-- Slides (use exact filenames Slider1.jpg Slider2.jpg Slider3.jpg) -->
+    <div class="slide active" data-index="0">
+      <img src="Slider1.jpg" alt="Slider 1 - Luxury perfume display">
     </div>
 
-    <!-- Arrows -->
-    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-    <a class="next" onclick="changeSlide(1)">&#10095;</a>
-
-    <!-- Dots -->
-    <div class="dots">
-      <span class="dot active" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
+    <div class="slide" data-index="1">
+      <img src="Slider2.jpg" alt="Slider 2 - Luxury perfume display">
     </div>
-  </div>
 
-  <!-- PRODUCTS -->
-  <section id="products" class="products">
-    <div class="card">
+    <div class="slide" data-index="2">
+      <img src="Slider3.jpg" alt="Slider 3 - Luxury perfume display">
+    </div>
+
+    <!-- overlay header content (logo + brand + CTA) -->
+    <div class="hero-overlay">
+      <div class="header-content">
+        <div class="brand-top">
+          <img src="logo.png" alt="Natural Fragrance logo" class="logo" />
+          <h1>Natural Fragrance</h1>
+          <p class="tag">Premium Perfumes | Long Lasting | Affordable Luxury</p>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#products" class="btn-primary" aria-label="Shop Now">Shop Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- dynamic caption area (we'll update text with JS when slide changes) -->
+    <div class="slide-caption" id="slideCaption">Elegance in Every Drop</div>
+
+    <!-- arrows -->
+    <div class="arrow left" id="prevBtn" role="button" aria-label="Previous slide">&#10094;</div>
+    <div class="arrow right" id="nextBtn" role="button" aria-label="Next slide">&#10095;</div>
+
+    <!-- dots -->
+    <div class="dots" id="dotsContainer" aria-hidden="false">
+      <div class="dot active" data-index="0" aria-label="Go to slide 1"></div>
+      <div class="dot" data-index="1" aria-label="Go to slide 2"></div>
+      <div class="dot" data-index="2" aria-label="Go to slide 3"></div>
+    </div>
+  </main>
+
+  <!-- PRODUCTS (kept original product names & WhatsApp links) -->
+  <section id="products" class="products" aria-label="Products">
+    <!-- Perfume 1 -->
+    <article class="card">
       <img src="red-drift.jpg" alt="Red Drift">
       <h3>Red Drift</h3>
       <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2299</p>
-      <a href="#">Order Now</a>
-    </div>
-    <div class="card">
+      <a class="order" href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank" rel="noopener">Order Now</a>
+    </article>
+
+    <!-- Perfume 2 -->
+    <article class="card">
       <img src="Executive Aura.jpeg" alt="Executive Aura">
       <h3>Executive Aura</h3>
       <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2650</p>
-      <a href="#">Order Now</a>
-    </div>
-    <div class="card">
+      <a class="order" href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank" rel="noopener">Order Now</a>
+    </article>
+
+    <!-- Perfume 3 -->
+    <article class="card">
       <img src="bombshell.jpg" alt="BombShell">
       <h3>BombShell</h3>
       <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2250</p>
-      <a href="#">Order Now</a>
-    </div>
-    <div class="card">
+      <a class="order" href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank" rel="noopener">Order Now</a>
+    </article>
+
+    <!-- Perfume 4 -->
+    <article class="card">
       <img src="Oud Al Huda.jpeg" alt="Oud Al Huda">
       <h3>Oud Al Huda</h3>
       <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2300</p>
-      <a href="#">Order Now</a>
-    </div>
-    <div class="card">
+      <a class="order" href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank" rel="noopener">Order Now</a>
+    </article>
+
+    <!-- Perfume 5 -->
+    <article class="card">
       <img src="9pm.jpg" alt="9:00 PM">
       <h3>9:00 PM</h3>
       <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2499</p>
-      <a href="#">Order Now</a>
-    </div>
-    <div class="card">
+      <a class="order" href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank" rel="noopener">Order Now</a>
+    </article>
+
+    <!-- Perfume 6 -->
+    <article class="card">
       <img src="Royal Amirah.jpeg" alt="Royal Amirah">
       <h3>Royal Amirah</h3>
       <p class="stock">✔ In Stock</p>
       <p>Price: Rs. 2250</p>
-      <a href="#">Order Now</a>
-    </div>
+      <a class="order" href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank" rel="noopener">Order Now</a>
+    </article>
   </section>
 
   <!-- ABOUT -->
-  <section class="about">
+  <section class="section" aria-label="About">
     <h2>Why Choose Us?</h2>
     <p>✔ Premium Quality Oils</p>
     <p>✔ Long Lasting Scents</p>
@@ -278,10 +367,10 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="contact">
+  <section class="section" aria-label="Contact">
     <h2>Contact Us</h2>
-    <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
-    <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
+    <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank" rel="noopener">+92 332 2026469</a></p>
+    <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank" rel="noopener">@naturalfragrance</a></p>
   </section>
 
   <!-- FOOTER -->
@@ -289,39 +378,101 @@
     <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- ===== JS: Slider auto + manual + touch/swipe support + caption updates ===== -->
   <script>
-    let slides = document.querySelectorAll(".slide");
-    let dots = document.querySelectorAll(".dot");
-    let index = 0;
-    let slideInterval = setInterval(nextSlide, 4000);
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const dots = Array.from(document.querySelectorAll('.dot'));
+      const captionEl = document.getElementById('slideCaption');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
 
-    function showSlide(n) {
-      slides.forEach((slide, i) => {
-        slide.classList.remove("active");
-        dots[i].classList.remove("active");
+      // captions corresponding to slides — change text if you want different captions
+      const captions = [
+        'Elegance in Every Drop',
+        'Timeless Fragrance',
+        'A Touch of Luxury'
+      ];
+
+      let index = 0;
+      let autoInterval = 4500;
+      let timer = null;
+
+      function show(n){
+        slides.forEach((s,i)=> s.classList.toggle('active', i===n));
+        dots.forEach((d,i)=> d.classList.toggle('active', i===n));
+        captionEl.textContent = captions[n] || '';
+        index = n;
+      }
+
+      function next(){
+        show((index+1) % slides.length);
+      }
+      function prev(){
+        show((index-1 + slides.length) % slides.length);
+      }
+
+      // auto start
+      function startAuto(){ timer = setInterval(next, autoInterval); }
+      function stopAuto(){ if(timer){ clearInterval(timer); timer = null; } }
+
+      // dot clicks
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e)=>{
+          const n = Number(dot.getAttribute('data-index'));
+          show(n);
+          stopAuto(); startAuto();
+        });
       });
-      slides[n].classList.add("active");
-      dots[n].classList.add("active");
-      index = n;
-    }
-    function changeSlide(step) {
-      index = (index + step + slides.length) % slides.length;
-      showSlide(index);
-      resetInterval();
-    }
-    function currentSlide(n) {
-      showSlide(n);
-      resetInterval();
-    }
-    function nextSlide() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }
-    function resetInterval() {
-      clearInterval(slideInterval);
-      slideInterval = setInterval(nextSlide, 4000);
-    }
+
+      // arrows
+      prevBtn.addEventListener('click', ()=>{
+        prev(); stopAuto(); startAuto();
+      });
+      nextBtn.addEventListener('click', ()=>{
+        next(); stopAuto(); startAuto();
+      });
+
+      // keyboard arrows (optional)
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft'){ prev(); stopAuto(); startAuto(); }
+        if(e.key === 'ArrowRight'){ next(); stopAuto(); startAuto(); }
+      });
+
+      // touch / swipe support for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+      const threshold = 40; // min px swipe
+
+      document.querySelector('.hero').addEventListener('touchstart', (e)=>{
+        stopAuto();
+        touchStartX = e.changedTouches[0].screenX;
+      }, {passive:true});
+
+      document.querySelector('.hero').addEventListener('touchend', (e)=>{
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if(Math.abs(diff) > threshold){
+          if(diff > 0) { next(); } else { prev(); }
+        }
+        startAuto();
+      }, {passive:true});
+
+      // init
+      show(0);
+      startAuto();
+
+      // safety: if images fail to load show caption and dark bg (no error thrown)
+      slides.forEach(s => {
+        const img = s.querySelector('img');
+        if(img){
+          img.addEventListener('error', ()=> { img.style.display='none'; s.style.background = '#111' });
+        }
+      });
+
+      // expose to window for debugging (optional)
+      window.NFSlider = { show, next, prev, stopAuto, startAuto };
+    })();
   </script>
 </body>
 </html>
