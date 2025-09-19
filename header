@@ -52,6 +52,29 @@
       font-size: 1.4rem;
       color: #f5d67b;
     }
+    /* ===== NAVBAR ===== */
+nav {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  gap: 30px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+nav a:hover {
+  background: gold;
+  color: black;
+}
 
     .slider-controls {
       position: absolute;
@@ -188,6 +211,11 @@
 <body>
   <!-- HEADER -->
   <header>
+    <nav>
+  <a href="#products">Home</a>
+  <a href="#our-story">Our Story</a>
+  <a href="#contact">Contact</a>
+</nav>
     <!-- Slider -->
     <div class="slider">
       <div class="slide active" style="background-image: url('Slider1.jpg');">
@@ -265,6 +293,12 @@
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
     </div>
   </section>
+  <!-- OUR STORY -->
+<section id="our-story" class="our-story">
+  <h2>Our Story</h2>
+  <p>Natural Fragrance was born with a passion to bring premium, long-lasting perfumes at affordable prices. 
+     We believe luxury scents should be accessible to everyone, crafted with care, and inspired by nature.</p>
+</section>
 
   <!-- ABOUT -->
   <section class="about">
@@ -276,7 +310,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="contact">
+  <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
     <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
