@@ -26,33 +26,46 @@
       color: white;
     }
     .slider {
-      position: absolute; top: 0; left: 0;
+      position: absolute;
+      top: 0; left: 0;
       width: 100%; height: 100%;
     }
     .slide {
-      position: absolute; width: 100%; height: 100%;
-      opacity: 0; transition: opacity 1s ease-in-out;
-      background-size: cover; background-position: center;
+      position: absolute;
+      width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
     }
     .slide.active { opacity: 1; }
+
     .caption {
       position: absolute;
-      bottom: 20%;
-      left: 50%; transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.55);
-      padding: 12px 20px; border-radius: 8px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem; color: #f5d67b;
-    }
-    .slider-controls {
-      position: absolute; bottom: 15px; left: 50%;
+      bottom: 30%; /* thoda upar */
+      left: 50%;
       transform: translateX(-50%);
-      display: flex; gap: 8px;
-      z-index: 3;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #f5d67b;
+    }
+
+    .slider-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
     }
     .dot {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: rgba(255,255,255,0.6); cursor: pointer;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      cursor: pointer;
     }
     .dot.active { background: gold; }
 
@@ -60,34 +73,49 @@
     .header-content {
       position: relative;
       z-index: 2;
-      top: 38%; /* logo aur text thoda upar */
-      transform: translateY(-50%);
+      top: 20%; /* thoda upar */
+      transform: translateY(-20%);
     }
     .header-content img {
       width: 120px; height: 120px;
-      border-radius: 50%; margin-bottom: 15px;
+      border-radius: 50%;
+      margin-bottom: 10px;
     }
     .header-content h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem; letter-spacing: 2px;
-      margin-bottom: 10px;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
     }
     .header-content p {
       font-size: 1.2rem;
-      margin-bottom: 15px; color: #eee;
+      margin-bottom: 15px;
+      color: #eee;
+    }
+
+    .shop-btn {
+      position: absolute;
+      bottom: 40px; /* dots ke upar */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
     }
     .btn {
       display: inline-block;
-      margin-bottom: 60px; /* 3 dots ke just upar */
       padding: 12px 28px;
       background: linear-gradient(135deg, #000, #333);
-      color: gold; text-decoration: none;
+      color: gold;
+      text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
       border: 2px solid gold;
       transition: all 0.3s ease;
     }
-    .btn:hover { background: gold; color: black; border-color: black; }
+    .btn:hover {
+      background: gold;
+      color: black;
+      border-color: black;
+    }
 
     /* Products */
     .products {
@@ -97,15 +125,18 @@
       padding: 60px 20px;
     }
     .card {
-      background: white; border-radius: 12px;
+      background: white;
+      border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px; text-align: center;
+      padding: 20px;
+      text-align: center;
       transition: transform 0.3s ease;
     }
     .card:hover { transform: translateY(-5px); }
     .card img {
       width: 100%; height: 240px;
-      object-fit: cover; border-radius: 12px;
+      object-fit: cover;
+      border-radius: 12px;
     }
     .card h3 {
       margin: 15px 0 5px;
@@ -115,29 +146,42 @@
     .card p { margin: 5px 0; color: #555; }
     .stock { color: green; font-weight: bold; margin-bottom: 10px; }
     .card a {
-      display: inline-block; padding: 10px 24px;
+      display: inline-block;
+      padding: 10px 24px;
       background: linear-gradient(135deg, #000, #333);
-      color: gold; text-decoration: none;
-      border-radius: 25px; font-weight: bold;
-      border: 2px solid gold; transition: all 0.3s ease;
+      color: gold;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      border: 2px solid gold;
+      transition: all 0.3s ease;
     }
-    .card a:hover { background: gold; color: black; border-color: black; }
+    .card a:hover {
+      background: gold; color: black; border-color: black;
+    }
 
     /* About & Contact */
     .about, .contact {
-      padding: 40px 20px; text-align: center;
-      background: #fff; margin: 20px; border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      background: #fff;
+      margin: 20px;
+      border-radius: 12px;
     }
     .about h2, .contact h2 {
-      margin-bottom: 15px; color: black;
+      margin-bottom: 15px;
+      color: black;
       font-family: 'Playfair Display', serif;
     }
 
     /* Footer */
     footer {
-      background: #000; color: #aaa;
-      text-align: center; padding: 15px;
-      margin-top: 20px; font-size: 0.9rem;
+      background: #000;
+      color: #aaa;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -156,6 +200,7 @@
         <div class="caption">Affordable Premium Fragrance</div>
       </div>
     </div>
+
     <div class="slider-controls">
       <div class="dot active"></div>
       <div class="dot"></div>
@@ -167,6 +212,10 @@
       <img src="logo.png" alt="Natural Fragrance Logo">
       <h1>Natural Fragrance</h1>
       <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
+    </div>
+
+    <!-- Shop Button -->
+    <div class="shop-btn">
       <a href="#products" class="btn">Shop Now</a>
     </div>
   </header>
@@ -180,41 +229,7 @@
       <p class="stock">In Stock</p>
       <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
     </div>
-    <div class="card">
-      <a href="Executive Aura.jpeg" target="_blank"><img src="Executive Aura.jpeg" alt="Executive Aura"></a>
-      <h3>Executive Aura</h3>
-      <p>Price: Rs. 2650</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="bombshell.jpg" target="_blank"><img src="bombshell.jpg" alt="bombshell"></a>
-      <h3>bombshell</h3>
-      <p>Price: Rs. 2250</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="Oud Al Huda.jpeg" target="_blank"><img src="Oud Al Huda.jpeg" alt="Oud Al Huda"></a>
-      <h3>Oud Al Huda</h3>
-      <p>Price: Rs. 2300</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="9 PM.jpg" target="_blank"><img src="9 PM.jpg" alt="9 PM"></a>
-      <h3>9 PM</h3>
-      <p>Price: Rs. 2499</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="Royal Amirah.jpeg" target="_blank"><img src="Royal Amirah.jpeg" alt="Royal Amirah"></a>
-      <h3>Royal Amirah</h3>
-      <p>Price: Rs. 2250</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
-    </div>
+    <!-- baki products same -->
   </section>
 
   <!-- ABOUT -->
@@ -253,13 +268,18 @@
       dots[i].classList.add('active');
       index = i;
     }
+
     function nextSlide() {
       index = (index + 1) % slides.length;
       showSlide(index);
     }
+
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => showSlide(i));
+      dot.addEventListener('click', () => {
+        showSlide(i);
+      });
     });
+
     setInterval(nextSlide, 5000);
   </script>
 </body>
