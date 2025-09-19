@@ -257,16 +257,32 @@ nav a:hover {
       margin-top: 20px;
       font-size: 0.9rem;
     }
+    /* ====== LOGO CUSTOM POSITION ====== */
+.logo {
+  position: absolute;
+  top: 20px;     /* logo upar se kitna neeche hoga */
+  left: 20px;    /* logo left side se kitna andar hoga */
+  z-index: 20;   /* taake slider ke upar rahe */
+}
+.logo img {
+  width: 150px;   /* size bara karne ke liye */
+  height: auto;   /* width ke hisaab se height auto adjust */
+}
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="logo.png" alt="Natural Fragrance Logo">
+    </div>
+
     <nav>
-  <a href="#products">Home</a>
-  <a href="#our-story">Our Story</a>
-  <a href="#contact">Contact</a>
-</nav>
+      <a href="#products">Home</a>
+      <a href="#our-story">Our Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
     <!-- Slider -->
     <div class="slider">
       <div class="slide active" style="background-image: url('Slider1.jpg');">
@@ -288,7 +304,6 @@ nav a:hover {
 
     <!-- Header Content -->
     <div class="header-content">
-      <img src="logo.png" alt="Natural Fragrance Logo">
       <h1>Natural Fragrance</h1>
       <p>Premium Perfumes | Long Lasting | Affordable Luxury</p>
     </div>
