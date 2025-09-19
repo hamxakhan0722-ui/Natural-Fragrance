@@ -272,51 +272,46 @@ nav a:hover {
    MOBILE RESPONSIVE FIX START
    =========================== */
 @media (max-width: 768px) {
-  /* Logo chhota aur neeche */
+  /* Logo chhota aur left top */
   .logo img {
-    width: 100px;
+    width: 80px;
   }
   .logo {
     top: 10px;
     left: 10px;
   }
 
-  /* Navbar neeche shift aur column */
+  /* Navbar upar horizontal row mein */
   nav {
-    top: 100px;
-    flex-direction: column;
-    gap: 10px;
-    background: rgba(0,0,0,0.6);
-    padding: 8px;
-    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    display: flex;
+    flex-direction: row; /* ✅ Hamesha row mein */
+    gap: 12px;           /* spacing thodi kam */
+    background: transparent; /* bg hata do */
+    padding: 0;
   }
   nav a {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    padding: 4px 6px;
+    background: rgba(0,0,0,0.5); /* optional small bg */
+    border-radius: 6px;
   }
 
-  /* Caption text chhota */
+  /* Caption text chhoti */
   .caption {
-    font-size: 1rem;
-    padding: 6px 12px;
-    bottom: 20%;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    bottom: 15%;
   }
 
   /* Heading aur paragraph chhote */
   .header-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
   .header-content p {
-    font-size: 1rem;
-  }
-
-  /* Product images chhoti */
-  .card img {
-    height: 180px;
-  }
-
-  /* Story padding chhoti */
-  .story-box {
-    padding: 20px;
+    font-size: 0.9rem;
   }
 }
 /* ===========================
