@@ -191,6 +191,57 @@ nav a:hover {
       margin: 20px;
       border-radius: 12px;
     }
+    .story-box {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 40px 42px;
+  background: #fbf8f4;               /* soft luxury background */
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.07);
+  font-family: 'Poppins', sans-serif;
+  color: #2b2b2b;
+  line-height: 1.8;
+}
+.story-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 18px;
+  color: #111;
+}
+.story-box .story-meta {
+  text-align:center;
+  font-size:0.95rem;
+  color:#666;
+  margin-bottom:18px;
+}
+.story-box .story-content {
+  max-height: 420px;       /* collapsed preview height */
+  overflow: hidden;
+  transition: max-height 0.45s ease;
+}
+.story-box .story-content.expanded {
+  max-height: 5000px;      /* enough for long content when expanded */
+}
+.story-box p { margin-bottom: 14px; text-align: justify; }
+.story-box .read-more {
+  display:block;
+  width:160px;
+  margin:22px auto 0;
+  text-align:center;
+  padding:10px 16px;
+  background: linear-gradient(135deg,#000,#333);
+  color: gold;
+  border-radius: 30px;
+  text-decoration:none;
+  cursor:pointer;
+  border: 1px solid gold;
+}
+.story-box .read-more:hover { background: gold; color:#000; }
+@media (max-width:768px){
+  .story-box { padding: 22px; margin: 30px 18px; }
+  .story-box .story-content { max-height: 320px; }
+}
     .about h2, .contact h2 {
       margin-bottom: 15px;
       color: black;
@@ -294,11 +345,30 @@ nav a:hover {
     </div>
   </section>
   <!-- OUR STORY -->
-<section id="our-story" class="our-story">
-  <h2>Our Story</h2>
-  <p>Natural Fragrance was born with a passion to bring premium, long-lasting perfumes at affordable prices. 
-     We believe luxury scents should be accessible to everyone, crafted with care, and inspired by nature.</p>
-</section>
+<section id="our-story" class="story-box" aria-labelledby="our-story-heading">
+    <h2 id="our-story-heading">OUR STORY</h2>
+    <div class="story-meta">Founded by <strong>Hamxa &amp; Nisha</strong> — a tale of craft, heritage and modern elegance</div>
+
+    <div id="storyContent" class="story-content">
+      <!-- START OF LONG STORY: Replace the sample paragraphs below with your full ~3000-word content -->
+      <p>
+        Natural Fragrance was born from a shared dream of two friends — Hamxa &amp; Nisha — who believed that true luxury should smell like memory,
+        feel like comfort, and be accessible without compromise. What began as a kitchen-table experiment in small-batch blends quickly became
+        a calling to honour traditional raw materials and contemporary sensibilities alike.
+      </p>
+
+      <p>
+        <!-- Continue many paragraphs... -->
+      </p>
+
+      <!-- Add your full text here. Keep paragraphs (<p>...</p>) separated for readability. -->
+      <!-- END OF LONG STORY -->
+    </div>
+
+    <!-- Read more toggle (recommended for long content) -->
+    <a id="storyToggle" class="read-more" role="button">Read more</a>
+  </section>
+  <!-- END OUR STORY -->
 
   <!-- ABOUT -->
   <section class="about">
@@ -349,6 +419,26 @@ nav a:hover {
     });
 
     setInterval(nextSlide, 5000);
+  </script>
+  (function(){
+      const toggle = document.getElementById('storyToggle');
+      const content = document.getElementById('storyContent');
+      let expanded = false;
+      if (!toggle || !content) return;
+
+      toggle.addEventListener('click', function(e){
+        e.preventDefault();
+        expanded = !expanded;
+        if (expanded) {
+          content.classList.add('expanded');
+          toggle.textContent = 'Show less';
+        } else {
+          content.classList.remove('expanded');
+          toggle.textContent = 'Read more';
+          content.parentElement.scrollIntoView({behavior:'smooth'});
+        }
+      });
+    })();
   </script>
 </body>
 </html>
