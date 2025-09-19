@@ -268,6 +268,60 @@ nav a:hover {
   width: 150px;   /* size bara karne ke liye */
   height: auto;   /* width ke hisaab se height auto adjust */
 }
+    /* ===========================
+   MOBILE RESPONSIVE FIX START
+   =========================== */
+@media (max-width: 768px) {
+  /* Logo chhota aur neeche */
+  .logo img {
+    width: 100px;
+  }
+  .logo {
+    top: 10px;
+    left: 10px;
+  }
+
+  /* Navbar neeche shift aur column */
+  nav {
+    top: 100px;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 8px;
+    border-radius: 10px;
+  }
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  /* Caption text chhota */
+  .caption {
+    font-size: 1rem;
+    padding: 6px 12px;
+    bottom: 20%;
+  }
+
+  /* Heading aur paragraph chhote */
+  .header-content h1 {
+    font-size: 1.8rem;
+  }
+  .header-content p {
+    font-size: 1rem;
+  }
+
+  /* Product images chhoti */
+  .card img {
+    height: 180px;
+  }
+
+  /* Story padding chhoti */
+  .story-box {
+    padding: 20px;
+  }
+}
+/* ===========================
+   MOBILE RESPONSIVE FIX END
+   =========================== */
   </style>
 </head>
 <body>
