@@ -406,35 +406,36 @@ nav a:hover {
     <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
   </footer>
 
-  <!-- SLIDER SCRIPT -->
   <script>
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let index = 0;
+  // ===== SLIDER SCRIPT =====
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let index = 0;
 
-    function showSlide(i) {
-      slides.forEach((s, idx) => {
-        s.classList.remove('active');
-        dots[idx].classList.remove('active');
-      });
-      slides[i].classList.add('active');
-      dots[i].classList.add('active');
-      index = i;
-    }
-
-    function nextSlide() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        showSlide(i);
-      });
+  function showSlide(i) {
+    slides.forEach((s, idx) => {
+      s.classList.remove('active');
+      dots[idx].classList.remove('active');
     });
+    slides[i].classList.add('active');
+    dots[i].classList.add('active');
+    index = i;
+  }
 
-    setInterval(nextSlide, 5000);
- <script>   ← Yahan se tumhara JS start hota hai
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showSlide(i);
+    });
+  });
+
+  setInterval(nextSlide, 5000);
+
+  // ===== OUR STORY TOGGLE =====
   (function(){
       const toggle = document.getElementById('storyToggle');
       const content = document.getElementById('storyContent');
@@ -455,6 +456,5 @@ nav a:hover {
       });
   })();
 </script>
-
 </body>
 </html>
