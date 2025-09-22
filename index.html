@@ -350,6 +350,71 @@ button:hover::after,
       color: black;
       font-family: 'Playfair Display', serif;
     }
+    /* OUR STORY BOX */
+.story-box {
+  max-width: 950px;
+  margin: 60px auto;
+  padding: 40px 42px;
+  background: #0d0d0d; /* dark elegant */
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+  color: #ddd;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.story-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 18px;
+  color: #d4af37; /* golden */
+}
+
+.story-box .story-meta {
+  font-size: 1rem;
+  font-style: italic;
+  color: #aaa;
+  margin-bottom: 18px;
+}
+
+.story-box .story-content {
+  max-height: 280px; /* collapsed preview */
+  overflow: hidden;
+  transition: max-height 0.45s ease;
+  text-align: justify;
+}
+
+.story-box .story-content.expanded {
+  max-height: 5000px; /* enough for full text */
+}
+
+.story-box p { margin-bottom: 14px; }
+
+.story-box .read-more {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #000, #333);
+  color: #d4af37;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #d4af37;
+  transition: all 0.3s ease;
+}
+
+.story-box .read-more:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* WHY CHOOSE US SECTION */
+#why-choose-us {
+  background: #0d0d0d;
+  color: #d4af37; /* golden text */
+  ...
+}
     /* WHY CHOOSE US SECTION */
 #why-choose-us {
   background: #0d0d0d;
@@ -612,15 +677,16 @@ nav a:hover {
     </div>
   </section>
   <!-- OUR STORY -->
-  <section id="our-story" class="our-story fade-in">
-    <h2>Our Story</h2>
-    <p id="storyContent">
-      Natural Fragrance was born from the passion of creating premium quality perfumes
-      using imported oils. Our mission is to provide long lasting, unique and affordable
-      fragrances that elevate your personality.
-    </p>
-    <a href="#" id="storyToggle">Read more</a>
-  </section>
+  <section id="our-story" class="story-box fade-in">
+  <h2>Our Story</h2>
+  <div class="story-meta">Founded by Hamza & Nisha</div>
+  <div id="storyContent" class="story-content">
+    <p>Hamza & Nisha, the founders of <strong>Natural Fragrance</strong>, started this journey with a simple belief: that everyone deserves to experience premium, long-lasting scents without compromising on affordability.</p>
+    <p>With a passion for luxury perfumery and years of research, they handpicked the finest imported oils to craft unique fragrances that truly stand out.</p>
+    <p>Natural Fragrance isn’t just about perfumes – it’s about creating memories, elevating your personality, and making luxury accessible for all.</p>
+  </div>
+  <a href="#" id="storyToggle" class="read-more">Read more</a>
+</section>
 
   <!-- WHY CHOOSE US -->
   <section id="why-choose-us" class="fade-in">
