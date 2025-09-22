@@ -612,113 +612,101 @@ nav a:hover {
     </div>
   </section>
   <!-- OUR STORY -->
-<section id="our-story" class="story-box fade-in" aria-labelledby="our-story-heading">
-    <h2 id="our-story-heading">OUR STORY</h2>
-    <div class="story-meta">Founded by <strong>Hamxa &amp; Nisha</strong> — a tale of craft, heritage and modern elegance</div>
+  <section id="our-story" class="our-story fade-in">
+    <h2>Our Story</h2>
+    <p id="storyContent">
+      Natural Fragrance was born from the passion of creating premium quality perfumes
+      using imported oils. Our mission is to provide long lasting, unique and affordable
+      fragrances that elevate your personality.
+    </p>
+    <a href="#" id="storyToggle">Read more</a>
+  </section>
 
-    <div id="storyContent" class="story-content">
-      <p>
-      Natural Fragrance was born from a shared dream of a couple—Hamza & Nisha—who believed that true luxury should smell like memory, feel like comfort, and be accessible without compromise. What began as a kitchen-table experiment in small-batch blends quickly became a calling to honor traditional raw materials and contemporary sensibilities alike.
-    </p>
-    <p>
-      Driven by a passion for the pure and the authentic, we grew tired of mass-produced scents that smelled the same on everyone. We dreamed of fragrances that told a story, that evolved with your skin’s unique chemistry, becoming a part of your narrative.
-    </p>
-    <p>
-      Every bottle is a testament to our journey. Hamza, with his keen eye for detail, meticulously sources the finest essential oils and absolutes from ethical growers around the world. Nisha, with her intuitive sense of harmony, crafts each blend, layering notes until they sing together in perfect balance.
-    </p>
-    <p>
-      From our hands to your home, we invite you to experience the difference that intention, love, and nature can make. This is more than a perfume; it is our shared passion, captured in a bottle, waiting to become a part of your story.
-    </p>
-    <p>
-      Welcome to Natural Fragrance.
-    </p>
-  </div>
-  <a href="#" id="storyToggle" class="read-more">Read more</a>
-</section>
-  <!-- END OUR STORY -->
   <!-- WHY CHOOSE US -->
-<section id="why-choose-us" class="fade-in">
-  <h2>Why Choose Us?</h2>
-  <p>Premium Quality Oils</p>
-  <p>Long Lasting Scents</p>
-  <p>Affordable Prices</p>
-  <p>Free Delivery on Bulk Orders</p>
-</section>
+  <section id="why-choose-us" class="fade-in">
+    <h2>Why Choose Us?</h2>
+    <p>Premium Quality Oils</p>
+    <p>Long Lasting Scents</p>
+    <p>Affordable Prices</p>
+    <p>Free Delivery on Bulk Orders</p>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact fade-in">
-  <h2>Contact Us</h2>
-  <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
-  <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
-</section>
+  <!-- CONTACT -->
+  <section id="contact" class="contact fade-in">
+    <h2>Contact Us</h2>
+    <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
+    <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
+  </section>
 
   <!-- FOOTER -->
-<footer>
-  <p>© 2025 <span>Natural Fragrance</span>. All Rights Reserved.</p>
-</footer>
+  <footer>
+    <p>&copy; 2025 Natural Fragrance. All Rights Reserved.</p>
+  </footer>
 
+  <!-- JAVASCRIPT -->
   <script>
-  // ===== SLIDER SCRIPT =====
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  let index = 0;
+    // ===== SLIDER SCRIPT =====
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let index = 0;
 
-  function showSlide(i) {
-    slides.forEach((s, idx) => {
-      s.classList.remove('active');
-      dots[idx].classList.remove('active');
+    function showSlide(i) {
+      slides.forEach((s, idx) => {
+        s.classList.remove('active');
+        dots[idx].classList.remove('active');
+      });
+      slides[i].classList.add('active');
+      dots[i].classList.add('active');
+      index = i;
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+      });
     });
-    slides[i].classList.add('active');
-    dots[i].classList.add('active');
-    index = i;
-  }
 
-  function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-  }
+    setInterval(nextSlide, 5000);
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      showSlide(i);
-    });
-  });
+    // ===== OUR STORY TOGGLE =====
+    (function(){
+        const toggle = document.getElementById('storyToggle');
+        const content = document.getElementById('storyContent');
+        let expanded = false;
+        if (!toggle || !content) return;
 
-  setInterval(nextSlide, 5000);
+        toggle.addEventListener('click', function(e){
+          e.preventDefault();
+          expanded = !expanded;
+          if (expanded) {
+            content.classList.add('expanded');
+            toggle.textContent = 'Show less';
+          } else {
+            content.classList.remove('expanded');
+            toggle.textContent = 'Read more';
+            content.parentElement.scrollIntoView({behavior:'smooth'});
+          }
+        });
+    })();
 
-  // ===== OUR STORY TOGGLE =====
-  (function(){
-      const toggle = document.getElementById('storyToggle');
-      const content = document.getElementById('storyContent');
-      let expanded = false;
-      if (!toggle || !content) return;
-
-      toggle.addEventListener('click', function(e){
-        e.preventDefault();
-        expanded = !expanded;
-        if (expanded) {
-          content.classList.add('expanded');
-          toggle.textContent = 'Show less';
-        } else {
-          content.classList.remove('expanded');
-          toggle.textContent = 'Read more';
-          content.parentElement.scrollIntoView({behavior:'smooth'});
+    // ===== FADE-IN OBSERVER =====
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
       });
-  })();
-</script>
-  const faders = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.2 });
+    }, { threshold: 0.2 });
 
-  faders.forEach(fader => {
-    observer.observe(fader);
-  });
-</script>
+    faders.forEach(fader => {
+      observer.observe(fader);
+    });
+  </script>
 </body>
 </html>
