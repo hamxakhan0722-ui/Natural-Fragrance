@@ -11,20 +11,26 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #fdf6f0;
-      color: #222;
-      line-height: 1.6;
-    }
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #020202, #0a0f2c); /* glossy black-blue */
+  color: #e6e6e6;   /* soft white text */
+  line-height: 1.6;
+}
 
-    /* Header with Slider */
-    header {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      text-align: center;
-      color: white;
-    }
+   /* HERO SECTION */
+header {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('hero-bg.jpg') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
     .slider {
       position: absolute;
       top: 0; left: 0;
@@ -63,13 +69,17 @@ nav {
   gap: 30px;
 }
 nav a {
-  color: white;
+  color: #f5d67b;   /* Golden text */
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
   padding: 6px 12px;
   border-radius: 20px;
   transition: 0.3s;
+}
+nav a:hover {
+  background: #f5d67b;  /* Golden bg */
+  color: #0a0f2c;       /* Dark blue text */
 }
 nav a:hover {
   background: gold;
@@ -92,29 +102,46 @@ nav a:hover {
     }
     .dot.active { background: gold; }
 
-    /* Header Content */
-    .header-content {
-      position: relative;
-      z-index: 2;
-      top: 20%; /* thoda upar */
-      transform: translateY(-20%);
-    }
-    .header-content img {
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    .header-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
-    }
-    .header-content p {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      color: #eee;
-    }
+    /* HERO TEXT */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: gold;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: gold;
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid gold;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: black;
+  color: gold;
+  border-color: black;
+}
 
     .shop-btn {
       position: absolute;
@@ -148,40 +175,61 @@ nav a:hover {
       padding: 60px 20px;
     }
     .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .card:hover { transform: translateY(-5px); }
-    .card img {
-      width: 100%; height: 240px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    .card h3 {
-      margin: 15px 0 5px;
-      font-size: 1.2rem;
-      font-family: 'Playfair Display', serif;
-    }
-    .card p { margin: 5px 0; color: #555; }
-    .stock { color: green; font-weight: bold; margin-bottom: 10px; }
-    .card a {
-      display: inline-block;
-      padding: 10px 24px;
-      background: linear-gradient(135deg, #000, #333);
-      color: gold;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-      border: 2px solid gold;
-      transition: all 0.3s ease;
-    }
-    .card a:hover {
-      background: gold; color: black; border-color: black;
-    }
+  background: #0a0f2c;  /* Dark blue background */
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f5d67b; /* Golden border */
+}
+.card:hover { 
+  transform: translateY(-8px); 
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+
+.card img {
+  width: 100%; 
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #f5d67b; /* Golden border for image */
+}
+
+.card h3 {
+  margin: 15px 0 5px;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  color: #f5d67b; /* Golden heading */
+}
+
+.card p { 
+  margin: 5px 0; 
+  color: #ddd; /* Light text */
+}
+
+.stock { 
+  color: #4caf50; 
+  font-weight: bold; 
+  margin-bottom: 10px; 
+}
+
+.card a {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #f5d67b; /* Golden background */
+  color: #0a0f2c;      /* Dark blue text */
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #f5d67b;
+  transition: all 0.3s ease;
+}
+.card a:hover {
+  background: transparent;
+  color: #f5d67b;
+  border-color: #f5d67b;
+}
 
     /* About & Contact */
     .about, .contact {
@@ -195,52 +243,76 @@ nav a:hover {
   max-width: 1100px;
   margin: 60px auto;
   padding: 40px 42px;
-  background: #fbf8f4;               /* soft luxury background */
-  border-radius: 16px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.07);
+  background: #0a0f2c;               /* Dark royal blue */
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
   font-family: 'Poppins', sans-serif;
-  color: #2b2b2b;
+  color: #f5f5f5;                     /* Light text */
   line-height: 1.8;
+  border: 1px solid #f5d67b;          /* Golden border */
 }
+
 .story-box h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
   text-align: center;
   margin-bottom: 18px;
-  color: #111;
+  color: #f5d67b;                     /* Golden heading */
 }
+
 .story-box .story-meta {
   text-align:center;
   font-size:0.95rem;
-  color:#666;
+  color:#d1cfcf;                      /* Soft grey text */
   margin-bottom:18px;
 }
+
 .story-box .story-content {
   max-height: 420px;       /* collapsed preview height */
   overflow: hidden;
   transition: max-height 0.45s ease;
 }
+
 .story-box .story-content.expanded {
   max-height: 5000px;      /* enough for long content when expanded */
 }
-.story-box p { margin-bottom: 14px; text-align: justify; }
+
+.story-box p { 
+  margin-bottom: 14px; 
+  text-align: justify; 
+  color: #f0f0f0;          /* Light paragraph text */
+}
+
 .story-box .read-more {
   display:block;
   width:160px;
   margin:22px auto 0;
   text-align:center;
   padding:10px 16px;
-  background: linear-gradient(135deg,#000,#333);
-  color: gold;
+  background: #f5d67b;                 /* Golden button */
+  color: #0a0f2c;                      /* Dark text */
   border-radius: 30px;
   text-decoration:none;
   cursor:pointer;
-  border: 1px solid gold;
+  border: 2px solid #f5d67b;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
-.story-box .read-more:hover { background: gold; color:#000; }
+
+.story-box .read-more:hover { 
+  background: transparent; 
+  color: #f5d67b; 
+  border-color:#f5d67b; 
+}
+
 @media (max-width:768px){
-  .story-box { padding: 22px; margin: 30px 18px; }
-  .story-box .story-content { max-height: 320px; }
+  .story-box { 
+    padding: 22px; 
+    margin: 30px 18px; 
+  }
+  .story-box .story-content { 
+    max-height: 320px; 
+  }
 }
     .about h2, .contact h2 {
       margin-bottom: 15px;
@@ -249,14 +321,21 @@ nav a:hover {
     }
 
     /* Footer */
-    footer {
-      background: #000;
-      color: #aaa;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
-      font-size: 0.9rem;
-    }
+footer {
+  background: linear-gradient(to right, #0d0d26, #1a1a40); /* glossy dark blue */
+  color: #d4af37; /* golden text */
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  border-top: 1px solid rgba(212, 175, 55, 0.4);
+}
+
+footer span {
+  font-weight: bold;
+  color: #ffd700; /* brighter golden for brand name */
+}
     /* ====== LOGO CUSTOM POSITION ====== */
 .logo {
   position: absolute;
@@ -293,11 +372,17 @@ nav a:hover {
     padding: 0;
   }
   nav a {
-    font-size: 0.8rem;
-    padding: 4px 6px;
-    background: rgba(0,0,0,0.5); /* optional small bg */
-    border-radius: 6px;
-  }
+  color: #f5d67b;   /* Golden text */
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 6px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+nav a:hover {
+  background: #f5d67b; /* Golden bg */
+  color: #0a0f2c;      /* Dark blue text */
+}
 
   /* Caption text chhoti */
   .caption {
@@ -451,9 +536,9 @@ nav a:hover {
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Natural Fragrance. All Rights Reserved.</p>
-  </footer>
+<footer>
+  <p>© 2025 <span>Natural Fragrance</span>. All Rights Reserved.</p>
+</footer>
 
   <script>
   // ===== SLIDER SCRIPT =====
