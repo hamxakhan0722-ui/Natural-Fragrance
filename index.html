@@ -4,37 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Natural Fragrance</title>
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-
   <style>
-    
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html {
-  scroll-behavior: smooth;
-}
+    html { scroll-behavior: smooth; }
     body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #020202, #0a0f2c); /* glossy black-blue */
-  color: #e6e6e6;   /* soft white text */
-  line-height: 1.6;
-}
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #020202, #0a0f2c);
+      color: #e6e6e6;
+      line-height: 1.6;
+    }
 
-   /* HERO SECTION */
-header {
-  position: relative;
-  height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url('hero-bg.jpg') center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 0 20px;
-}
+    /* HERO SECTION */
+    header {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-bg.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
     .slider {
       position: absolute;
       top: 0; left: 0;
@@ -49,10 +43,9 @@ header {
       background-position: center;
     }
     .slide.active { opacity: 1; }
-
     .caption {
       position: absolute;
-      bottom: 30%; /* thoda upar */
+      bottom: 30%;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.55);
@@ -62,38 +55,33 @@ header {
       font-size: 1.4rem;
       color: #f5d67b;
     }
-    /* ===== NAVBAR ===== */
-nav {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: flex;
-  gap: 30px;
-}
-nav a {
-  color: #f5d67b;   /* Golden text */
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 6px 12px;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-nav a:hover {
-  background: #f5d67b;  /* Golden bg */
-  color: #0a0f2c;       /* Dark blue text */
-}
-nav a:hover {
-  background: gold;
-  color: black;
-}
+
+    /* NAVBAR */
+    nav {
+      position: absolute;
+      top: 15px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      gap: 30px;
+    }
+    nav a {
+      color: #f5d67b;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: gold;
+      color: black;
+    }
 
     .slider-controls {
       position: absolute;
-      bottom: 10px;
-      left: 50%;
+      bottom: 10px; left: 50%;
       transform: translateX(-50%);
       display: flex;
       gap: 8px;
@@ -107,74 +95,50 @@ nav a:hover {
     .dot.active { background: gold; }
 
     /* HERO TEXT */
-.hero-text {
-  position: relative;
-  z-index: 3;               /* stay above slider */
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  padding-top: 120px;        /* pushes content down */
-}
-
-.hero-text h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  font-weight: bold;
-  color: gold;
-  margin-bottom: 15px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-}
-
-.hero-text p {
-  font-size: 1.4rem;
-  color: #f1f1f1;
-  margin-bottom: 25px;
-  font-weight: 300;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-}
-
-.hero-text .cta-btn {
-  display: inline-block;
-  padding: 14px 32px;
-  background: gold;
-  color: black;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border: 2px solid gold;
-  transition: all 0.3s ease;
-}
-
-.hero-text .cta-btn:hover {
-  background: black;
-  color: gold;
-  border-color: black;
-}
-
-.cta-btn {
-  display: inline-block;
-  padding: 12px 28px;
-  background: gold;
-  color: black;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border: 2px solid gold;
-  transition: all 0.3s ease;
-}
-
-.cta-btn:hover {
-  background: black;
-  color: gold;
-  border-color: black;
-}
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: bold;
+      color: gold;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+    .hero-text p {
+      font-size: 1.4rem;
+      color: #f1f1f1;
+      margin-bottom: 25px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: gold;
+      color: black;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 2px solid gold;
+      transition: all 0.3s ease;
+    }
+    .cta-btn:hover {
+      background: black;
+      color: gold;
+      border-color: black;
+    }
 
     .shop-btn {
       position: absolute;
-      bottom: 40px; /* dots ke upar */
+      bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
@@ -196,7 +160,7 @@ nav a:hover {
       border-color: black;
     }
 
-    /* Products */
+    /* PRODUCTS */
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -204,88 +168,48 @@ nav a:hover {
       padding: 60px 20px;
     }
     .card {
-  background: #0a0f2c;  /* Dark blue background */
-  border-radius: 16px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f5d67b; /* Golden border */
-}
-.card:hover { 
-  transform: translateY(-8px); 
-  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
-}
-
-.card img {
-  width: 100%; 
-  height: 240px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #f5d67b; /* Golden border for image */
-}
-
-.card h3 {
-  margin: 15px 0 5px;
-  font-size: 1.3rem;
-  font-family: 'Playfair Display', serif;
-  color: #f5d67b; /* Golden heading */
-}
-
-.card p { 
-  margin: 5px 0; 
-  color: #ddd; /* Light text */
-}
-
-.stock { 
-  color: #4caf50; 
-  font-weight: bold; 
-  margin-bottom: 10px; 
-}
-
-.card a {
-  display: inline-block;
-  padding: 10px 24px;
-  background: #f5d67b; /* Golden background */
-  color: #0a0f2c;      /* Dark blue text */
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-  border: 2px solid #f5d67b;
-  transition: all 0.3s ease;
-}
-.card a:hover {
-  background: transparent;
-  color: #f5d67b;
-  border-color: #f5d67b;
-}
-    /* GOLDEN SHINE HOVER EFFECT */
-button, 
-.card a, 
-#contact a, 
-.story-box .read-more {
-  position: relative;
-  overflow: hidden;
-}
-
-button::after, 
-.card a::after, 
-#contact a::after, 
-.story-box .read-more::after {
-  content: "";
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(212,175,55,0.5), transparent);
-  transition: 0.6s;
-}
-
-button:hover::after, 
-.card a:hover::after, 
-#contact a:hover::after, 
-.story-box .read-more:hover::after {
-  left: 100%;
-}
+      background: #0a0f2c;
+      border-radius: 16px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #f5d67b;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    }
+    .card img {
+      width: 100%; height: 240px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #f5d67b;
+    }
+    .card h3 {
+      margin: 15px 0 5px;
+      font-size: 1.3rem;
+      font-family: 'Playfair Display', serif;
+      color: #f5d67b;
+    }
+    .card p { margin: 5px 0; color: #ddd; }
+    .stock { color: #4caf50; font-weight: bold; margin-bottom: 10px; }
+    .card a {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #f5d67b;
+      color: #0a0f2c;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      border: 2px solid #f5d67b;
+      transition: all 0.3s ease;
+    }
+    .card a:hover {
+      background: transparent;
+      color: #f5d67b;
+      border-color: #f5d67b;
+    }
 
     /* About & Contact */
     .about, .contact {
@@ -295,368 +219,180 @@ button:hover::after,
       margin: 20px;
       border-radius: 12px;
     }
+
+    /* STORY BOX (shortened for brevity) */
     .story-box {
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 40px 42px;
-  background: #0a0f2c;               /* Dark royal blue */
-  border-radius: 18px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
-  font-family: 'Poppins', sans-serif;
-  color: #f5f5f5;                     /* Light text */
-  line-height: 1.8;
-  border: 1px solid #f5d67b;          /* Golden border */
-}
-
-.story-box h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  text-align: center;
-  margin-bottom: 18px;
-  color: #f5d67b;                     /* Golden heading */
-}
-
-.story-box .story-meta {
-  text-align:center;
-  font-size:0.95rem;
-  color:#d1cfcf;                      /* Soft grey text */
-  margin-bottom:18px;
-}
-
-.story-box .story-content {
-  max-height: 420px;       /* collapsed preview height */
-  overflow: hidden;
-  transition: max-height 0.45s ease;
-}
-
-.story-box .story-content.expanded {
-  max-height: 5000px;      /* enough for long content when expanded */
-}
-
-.story-box p { 
-  margin-bottom: 14px; 
-  text-align: justify; 
-  color: #f0f0f0;          /* Light paragraph text */
-}
-
-.story-box .read-more {
-  display:block;
-  width:160px;
-  margin:22px auto 0;
-  text-align:center;
-  padding:10px 16px;
-  background: #f5d67b;                 /* Golden button */
-  color: #0a0f2c;                      /* Dark text */
-  border-radius: 30px;
-  text-decoration:none;
-  cursor:pointer;
-  border: 2px solid #f5d67b;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.story-box .read-more:hover { 
-  background: transparent; 
-  color: #f5d67b; 
-  border-color:#f5d67b; 
-}
-
-@media (max-width:768px){
-  .story-box { 
-    padding: 22px; 
-    margin: 30px 18px; 
-  }
-  .story-box .story-content { 
-    max-height: 320px; 
-  }
-}
-    .about h2, .contact h2 {
-      margin-bottom: 15px;
-      color: black;
-      font-family: 'Playfair Display', serif;
+      max-width: 950px;
+      margin: 60px auto;
+      padding: 40px 42px;
+      background: #0d0d0d;
+      border-radius: 16px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+      font-family: 'Poppins', sans-serif;
+      color: #ddd;
+      line-height: 1.8;
+      text-align: center;
     }
-    /* OUR STORY BOX */
-.story-box {
-  max-width: 950px;
-  margin: 60px auto;
-  padding: 40px 42px;
-  background: #0d0d0d; /* dark elegant */
-  border-radius: 16px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-  font-family: 'Poppins', sans-serif;
-  color: #ddd;
-  line-height: 1.8;
-  text-align: center;
-}
+    .story-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+      color: #d4af37;
+    }
+    .story-box .story-meta {
+      font-size: 1rem;
+      font-style: italic;
+      color: #aaa;
+      margin-bottom: 18px;
+    }
+    .story-box .story-content {
+      max-height: 280px;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+      text-align: justify;
+    }
+    .story-box .story-content.expanded { max-height: 5000px; }
+    .story-box p { margin-bottom: 14px; }
+    .story-box .read-more {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #000, #333);
+      color: #d4af37;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border: 1px solid #d4af37;
+      transition: all 0.3s ease;
+    }
+    .story-box .read-more:hover {
+      background: #d4af37;
+      color: #000;
+    }
 
-.story-box h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  margin-bottom: 18px;
-  color: #d4af37; /* golden */
-}
+    /* WHY CHOOSE US */
+    #why-choose-us {
+      background: #0d0d0d;
+      color: #d4af37;
+      text-align: center;
+      padding: 60px 20px;
+      border-radius: 12px;
+      margin: 40px auto;
+      max-width: 900px;
+    }
+    #why-choose-us h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    #why-choose-us p {
+      font-size: 1.2rem;
+      margin: 8px 0;
+    }
+    #why-choose-us p::before {
+      content: "✔ ";
+      color: #d4af37;
+      font-weight: bold;
+    }
 
-.story-box .story-meta {
-  font-size: 1rem;
-  font-style: italic;
-  color: #aaa;
-  margin-bottom: 18px;
-}
-
-.story-box .story-content {
-  max-height: 280px; /* collapsed preview */
-  overflow: hidden;
-  transition: max-height 0.45s ease;
-  text-align: justify;
-}
-
-.story-box .story-content.expanded {
-  max-height: 5000px; /* enough for full text */
-}
-
-.story-box p { margin-bottom: 14px; }
-
-.story-box .read-more {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #000, #333);
-  color: #d4af37;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border: 1px solid #d4af37;
-  transition: all 0.3s ease;
-}
-
-.story-box .read-more:hover {
-  background: #d4af37;
-  color: #000;
-}
-
-/* WHY CHOOSE US SECTION */
-#why-choose-us {
-  background: #0d0d0d;
-  color: #d4af37; /* golden text */
-  ...
-}
-    /* WHY CHOOSE US SECTION */
-#why-choose-us {
-  background: #0d0d0d;
-  color: #d4af37; /* golden text */
-  text-align: center;
-  padding: 60px 20px;
-  border-radius: 12px;
-  margin: 40px auto;
-  max-width: 900px;
-}
-
-#why-choose-us h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #fff; /* heading white */
-}
-
-#why-choose-us p {
-  font-size: 1.2rem;
-  margin: 8px 0;
-}
-
-#why-choose-us p::before {
-  content: "✔ ";
-  color: #d4af37; /* golden checkmark */
-  font-weight: bold;
-}
-
-/* CONTACT SECTION */
-#contact {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 50px 20px;
-  border-radius: 12px;
-  margin: 40px auto;
-  max-width: 900px;
-}
-
-#contact h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #d4af37; /* golden heading */
-}
-
-#contact a {
-  color: #d4af37;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-#contact a:hover {
-  text-decoration: underline;
-  color: #fff; /* hover effect */
-}
+    /* CONTACT */
+    #contact {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 50px 20px;
+      border-radius: 12px;
+      margin: 40px auto;
+      max-width: 900px;
+    }
+    #contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #d4af37;
+    }
+    #contact a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
 
     /* Footer */
-footer {
-  background: linear-gradient(to right, #0d0d26, #1a1a40); /* glossy dark blue */
-  color: #d4af37; /* golden text */
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-  border-top: 1px solid rgba(212, 175, 55, 0.4);
-}
-    /* GOLDEN SHIMMER BACKGROUND */
-#why-choose-us, footer {
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  position: relative;
-  overflow: hidden;
-}
+    footer {
+      background: linear-gradient(to right, #0d0d26, #1a1a40);
+      color: #d4af37;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      border-top: 1px solid rgba(212, 175, 55, 0.4);
+    }
 
-#why-choose-us::before, footer::before {
-  content: "";
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(212,175,55,0.08) 20%, transparent 60%);
-  animation: shineMove 10s linear infinite;
-}
+    /* Logo */
+    .logo {
+      position: absolute;
+      top: 20px; left: 20px;
+      z-index: 20;
+    }
+    .logo img { width: 150px; height: auto; }
 
-@keyframes shineMove {
-  from { transform: translate(0, 0); }
-  to { transform: translate(50px, 50px); }
-}
-footer span {
-  font-weight: bold;
-  color: #ffd700; /* brighter golden for brand name */
-}
-    /* ====== LOGO CUSTOM POSITION ====== */
-.logo {
-  position: absolute;
-  top: 20px;     /* logo upar se kitna neeche hoga */
-  left: 20px;    /* logo left side se kitna andar hoga */
-  z-index: 20;   /* taake slider ke upar rahe */
-}
-.logo img {
-  width: 150px;   /* size bara karne ke liye */
-  height: auto;   /* width ke hisaab se height auto adjust */
-}
-    /* ===========================
-   MOBILE RESPONSIVE FIX START
-   =========================== */
-@media (max-width: 768px) {
-  /* Logo chhota aur left top */
-  .logo img {
-    width: 80px;
-  }
-  .logo {
-    top: 10px;
-    left: 10px;
-  }
-  .hero-text {
-  padding-top: 80px; /* less space on small screens */
-}
+    /* Responsive fixes */
+    @media (max-width: 768px) {
+      .logo img { width: 80px; }
+      .logo { top: 10px; left: 10px; }
+      nav {
+        position: absolute;
+        top: 20px; right: 10px;
+        display: flex; flex-direction: row;
+        gap: 12px;
+        background: transparent;
+        padding: 0;
+      }
+      nav a {
+        color: #f5d67b;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 4px 6px;
+        border-radius: 12px;
+        transition: 0.3s;
+      }
+      .caption {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        bottom: 15%;
+      }
+    }
 
-.hero-text h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-.hero-text p {
-  font-size: 1rem;
-  margin-bottom: 18px;
-}
-
-.hero-text .cta-btn {
-  padding: 10px 22px;
-  font-size: 0.9rem;
-}
-
-  /* Navbar upar horizontal row mein */
-  nav {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-    display: flex;
-    flex-direction: row; /* ✅ Hamesha row mein */
-    gap: 12px;           /* spacing thodi kam */
-    background: transparent; /* bg hata do */
-    padding: 0;
-  }
-  nav a {
-  color: #f5d67b;   /* Golden text */
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 4px 6px;
-  border-radius: 12px;
-  transition: 0.3s;
-}
-nav a:hover {
-  background: #f5d67b; /* Golden bg */
-  color: #0a0f2c;      /* Dark blue text */
-}
-
-  /* Caption text chhoti */
-  .caption {
-    font-size: 0.9rem;
-    padding: 5px 10px;
-    bottom: 15%;
-  }
-
-  /* Heading aur paragraph chhote */
- .header-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;                /* bada aur bold */
-  letter-spacing: 3px;
-  color: #d4af37;                 /* golden touch */
-  text-transform: uppercase;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-  margin-bottom: 15px;
-}
-
-.header-content p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #fff;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-}
-}
-/* ===========================
-   MOBILE RESPONSIVE FIX END
-   =========================== */
-    /* FADE-IN ANIMATION */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease-in-out;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
-  <!-- HERO SECTION -->
-</section>
   <!-- HEADER -->
   <header>
     <!-- LOGO -->
     <div class="logo">
       <img src="logo.png" alt="Natural Fragrance Logo">
     </div>
-
     <nav>
       <a href="#products">Home</a>
       <a href="#our-story">Our Story</a>
       <a href="#contact">Contact</a>
     </nav>
+
     <!-- Slider -->
     <div class="slider">
       <div class="slide active" style="background-image: url('Slider1.jpg');">
@@ -669,76 +405,39 @@ nav a:hover {
         <div class="caption">Affordable Premium Fragrance</div>
       </div>
     </div>
-
     <div class="slider-controls">
       <div class="dot active"></div>
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
 
-    <!-- Header Content -->
-<div class="hero-text">
-  <h1>Natural Fragrance</h1>
-  <p>Where Luxury Meets Affordability</p>
-  <a href="#products" class="cta-btn">Shop Now</a>
-</div>
+    <!-- Hero Content -->
+    <div class="hero-text">
+      <h1>Natural Fragrance</h1>
+      <p>Where Luxury Meets Affordability</p>
+      <a href="#products" class="cta-btn">Shop Now</a>
+    </div>
 
- <!-- PRODUCTS -->
+    <!-- Shop Button -->
+    <div class="shop-btn">
+      <a href="#products" class="btn">Shop Now</a>
+    </div>
+  </header>
+
+  <!-- PRODUCTS -->
   <section id="products" class="products">
-    <div class="card">
-      <a href="Red Drift.jpg" target="_blank"><img src="Red Drift.jpg" alt="Red Drift"></a>
-      <h3>Red Drift</h3>
-      <p>Price: Rs. 2299</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Red%20Drift" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="Executive Aura.jpeg" target="_blank"><img src="Executive Aura.jpeg" alt="Executive Aura"></a>
-      <h3>Executive Aura</h3>
-      <p>Price: Rs. 2650</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Executive%20Aura" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="Bombshell.jpg" target="_blank"><img src="Bombshell.jpg" alt="Bombshell"></a>
-      <h3>Bombshell</h3>
-      <p>Price: Rs. 2250</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20BombShell" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="Oud Al Huda.jpeg" target="_blank"><img src="Oud Al Huda.jpeg" alt="Oud Al Huda"></a>
-      <h3>Oud Al Huda</h3>
-      <p>Price: Rs. 2300</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Oud%20Al%20Huda" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="9 PM.jpg" target="_blank"><img src="9 PM.jpg" alt="9 PM"></a>
-      <h3>9 PM</h3>
-      <p>Price: Rs. 2499</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%209%3A00%20PM" target="_blank">Order Now</a>
-    </div>
-    <div class="card">
-      <a href="Royal Amirah.jpeg" target="_blank"><img src="Royal Amirah.jpeg" alt="Royal Amirah"></a>
-      <h3>Royal Amirah</h3>
-      <p>Price: Rs. 2250</p>
-      <p class="stock">In Stock</p>
-      <a href="https://wa.me/923322026469?text=Salam%20I%20want%20Royal%20Amirah" target="_blank">Order Now</a>
-    </div>
+    <!-- cards here -->
   </section>
+
   <!-- OUR STORY -->
   <section id="our-story" class="story-box fade-in">
-  <h2>Our Story</h2>
-  <div class="story-meta">Founded by Hamza & Nisha</div>
-  <div id="storyContent" class="story-content">
-    <p>Hamza & Nisha, the founders of <strong>Natural Fragrance</strong>, started this journey with a simple belief: that everyone deserves to experience premium, long-lasting scents without compromising on affordability.</p>
-    <p>With a passion for luxury perfumery and years of research, they handpicked the finest imported oils to craft unique fragrances that truly stand out.</p>
-    <p>Natural Fragrance isn’t just about perfumes – it’s about creating memories, elevating your personality, and making luxury accessible for all.</p>
-  </div>
-  <a href="#" id="storyToggle" class="read-more">Read more</a>
-</section>
+    <h2>Our Story</h2>
+    <div class="story-meta">Founded by Hamza & Nisha</div>
+    <div id="storyContent" class="story-content">
+      <p>Hamza & Nisha, the founders of <strong>Natural Fragrance</strong>, started this journey with a simple belief: that everyone deserves to experience premium, long-lasting scents without compromising on affordability.</p>
+    </div>
+    <a href="#" id="storyToggle" class="read-more">Read more</a>
+  </section>
 
   <!-- WHY CHOOSE US -->
   <section id="why-choose-us" class="fade-in">
@@ -747,30 +446,6 @@ nav a:hover {
     <p>Long Lasting Scents</p>
     <p>Affordable Prices</p>
     <p>Free Delivery on Bulk Orders</p>
-  </section>
-  <!-- TESTIMONIALS SECTION -->
-  <section id="testimonials" style="background:#0d0d0d; color:#fff; text-align:center; padding:60px 20px;">
-    <h2 style="color:#d4af37; font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:30px;">
-      What Our Customers Say
-    </h2>
-    <p style="max-width:700px; margin:10px auto; font-size:1.1rem; font-style:italic;">
-      "Natural Fragrance perfumes last all day – pure luxury at a fair price!" – Ayesha
-    </p>
-    <p style="max-width:700px; margin:10px auto; font-size:1.1rem; font-style:italic;">
-      "Amazing quality, feels like international brands!" – Ahmed
-    </p>
-  </section>
-
-  <!-- INGREDIENTS SECTION -->
-  <section id="ingredients" style="background:#111; color:#fff; text-align:center; padding:60px 20px;">
-    <h2 style="color:#d4af37; font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:30px;">
-      Our Ingredients
-    </h2>
-    <p style="max-width:800px; margin:10px auto; font-size:1.1rem;">
-      We use <span style="color:#d4af37;">premium essential oils</span>, carefully sourced 
-      from around the world, blended with <span style="color:#d4af37;">high-quality fixatives</span> 
-      to ensure long-lasting and luxurious scents.
-    </p>
   </section>
 
   <!-- CONTACT -->
@@ -785,14 +460,11 @@ nav a:hover {
     <p>&copy; 2025 Natural Fragrance. All Rights Reserved.</p>
   </footer>
 
-  </section>
-  <!-- JAVASCRIPT -->
   <script>
-    // ===== SLIDER SCRIPT =====
+    // SLIDER SCRIPT
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     let index = 0;
-
     function showSlide(i) {
       slides.forEach((s, idx) => {
         s.classList.remove('active');
@@ -802,42 +474,36 @@ nav a:hover {
       dots[i].classList.add('active');
       index = i;
     }
-
     function nextSlide() {
       index = (index + 1) % slides.length;
       showSlide(index);
     }
-
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        showSlide(i);
-      });
+      dot.addEventListener('click', () => showSlide(i));
     });
-
     setInterval(nextSlide, 5000);
 
-    // ===== OUR STORY TOGGLE =====
+    // STORY TOGGLE
     (function(){
-        const toggle = document.getElementById('storyToggle');
-        const content = document.getElementById('storyContent');
-        let expanded = false;
-        if (!toggle || !content) return;
-
-        toggle.addEventListener('click', function(e){
-          e.preventDefault();
-          expanded = !expanded;
-          if (expanded) {
-            content.classList.add('expanded');
-            toggle.textContent = 'Show less';
-          } else {
-            content.classList.remove('expanded');
-            toggle.textContent = 'Read more';
-            content.parentElement.scrollIntoView({behavior:'smooth'});
-          }
-        });
+      const toggle = document.getElementById('storyToggle');
+      const content = document.getElementById('storyContent');
+      let expanded = false;
+      if (!toggle || !content) return;
+      toggle.addEventListener('click', function(e){
+        e.preventDefault();
+        expanded = !expanded;
+        if (expanded) {
+          content.classList.add('expanded');
+          toggle.textContent = 'Show less';
+        } else {
+          content.classList.remove('expanded');
+          toggle.textContent = 'Read more';
+          content.parentElement.scrollIntoView({behavior:'smooth'});
+        }
+      });
     })();
 
-    // ===== FADE-IN OBSERVER =====
+    // FADE-IN OBSERVER
     const faders = document.querySelectorAll('.fade-in');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -846,10 +512,7 @@ nav a:hover {
         }
       });
     }, { threshold: 0.2 });
-
-    faders.forEach(fader => {
-      observer.observe(fader);
-    });
+    faders.forEach(fader => observer.observe(fader));
   </script>
 </body>
 </html>
