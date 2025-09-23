@@ -43,6 +43,8 @@
 
     /* Logo top left */
     .logo {
+      height: 80px;  /* adjust yahan karo 70-100 ke beech mai */
+  width: auto;
       position: absolute;
       top: 15px;
       left: 20px;
@@ -94,6 +96,51 @@
       70% { margin-left: -200%; }
       100% { margin-left: -200%; }
     }
+    /* Arrows design */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #d4af37; /* Gold */
+  background: rgba(0,0,0,0.5);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.arrow.left {
+  left: 20px;
+}
+
+.arrow.right {
+  right: 20px;
+}
+    /* Dots navigation */
+.dots {
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+}
+
+.dot {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #555;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: #d4af37; /* Gold */
+}
   </style>
 </head>
 <body>
@@ -115,7 +162,14 @@
       <img src="Slider2.jpg" alt="Slide 2">
       <img src="Slider3.jpg" alt="Slide 3">
     </div>
+    <button class="arrow left" onclick="prevSlide()">&#10094;</button>
+<button class="arrow right" onclick="nextSlide()">&#10095;</button>
     <div class="caption" id="caption">Elegance in Every Drop</div>
+    <div class="dots">
+    <span class="dot" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
   </div>
 
   <script>
@@ -127,10 +181,29 @@
     ];
     let index = 0;
     const captionEl = document.getElementById("caption");
+    function currentSlide(n) {
+  index = n;
+  updateSlide();
+}
+
+function updateSlide() {
+  // Captions update
+  captionEl.textContent = captions[index];
+
+  // Dots update
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot, i) => {
+    dot.classList.remove("active");
+    if (i === index) {
+      dot.classList.add("active");
+    }
+  });
+}
 
     setInterval(() => {
       index = (index + 1) % captions.length;
       captionEl.textContent = captions[index];
+      updateSlide(); //
     }, 5000); // 5s per slide
   </script>
 
