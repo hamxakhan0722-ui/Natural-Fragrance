@@ -63,14 +63,15 @@
     }
 
     .slides {
-      display: flex;
-      width: 300%;
-      animation: slide 15s infinite;
-    }
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
 
     .slides img {
+  flex: 0 0 100%;
   width: 100%;
-  max-height: 400px; /* height limit tak rahegi */
+  max-height: 400px;
   object-fit: cover;
 }
 
@@ -87,15 +88,6 @@
       font-size: 18px;
     }
 
-    /* Animation */
-    @keyframes slide {
-      0% { margin-left: 0; }
-      30% { margin-left: 0; }
-      35% { margin-left: -100%; }
-      65% { margin-left: -100%; }
-      70% { margin-left: -200%; }
-      100% { margin-left: -200%; }
-    }
     /* Arrows design */
 .arrow {
   position: absolute;
@@ -198,6 +190,52 @@ function updateSlide() {
     if (i === index) {
       dot.classList.add("active");
     }
+    const slides = document.querySelectorAll(".slides img");
+let currentIndex = 0;
+
+// function to show slide
+function showSlide(index) {
+  if (index < 0) {
+    index = slides.length - 1;
+  } else if (index >= slides.length) {
+    index = 0;
+  }
+  currentIndex = index;
+
+  // move slides
+  document.querySelector(".slides").style.transform = `translateX(-${index * 100}%)`;
+
+  // update caption
+  captionEl.textContent = captions[index % captions.length];
+
+  // update dots
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+}
+
+// arrow buttons
+function nextSlide() {
+  showSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+  showSlide(currentIndex - 1);
+}
+
+// dots control
+function currentSlide(n) {
+  showSlide(n);
+}
+
+// auto play
+setInterval(() => {
+  nextSlide();
+}, 5000);
+
+// start first slide
+showSlide(0);
   });
 }
 
