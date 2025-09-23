@@ -8,14 +8,19 @@
   <style>
       /* Banner row */
 .banner-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto; /* left | center | right */
+ display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   padding: 0 40px;
+  position: relative; /* taa ke banner-center absolute kaam kare */
 }
 
 .banner-center {
-  text-align: center; /* heading aur tagline center ho */
+  position: absolute;
+  left: 50%;   /* page ka bilkul center horizontally */
+  top: 50%;    /* banner ke vertical center par */
+  transform: translate(-50%, -50%); /* exact center banane ke liye */
+  text-align: center;
 }
 
 /* Center part (heading + tagline) */
