@@ -8,11 +8,14 @@
   <style>
       /* Banner row */
 .banner-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* left | center | right */
   align-items: center;
-  text-align: center;
-  padding: 0 40px; /* thoda gap left-right */
+  padding: 0 40px;
+}
+
+.banner-center {
+  text-align: center; /* heading aur tagline center ho */
 }
 
 /* Center part (heading + tagline) */
