@@ -1,514 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Natural Fragrance</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfume Landing Page</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #020202, #0a0f2c);
-      color: #e6e6e6;
-      line-height: 1.6;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000; /* Black theme */
+      color: #fff;
     }
 
-    /* HERO SECTION */
-    header {
-      position: relative;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-bg.jpg') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    /* Luxury Banner */
+    .banner {
+      background: linear-gradient(90deg, #000, #111);
+      color: #d4af37; /* Gold */
       text-align: center;
-      color: white;
-      padding: 0 20px;
+      padding: 20px;
+      font-size: 24px;
+      letter-spacing: 2px;
+      border-bottom: 2px solid #d4af37;
+      position: relative;
     }
+
+    .banner h1 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+
+    .banner p {
+      font-size: 16px;
+      color: #fff;
+      font-style: italic;
+    }
+
+    /* Logo top left */
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    /* Slider Section */
     .slider {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-    }
-    .slide {
-      position: absolute;
-      width: 100%; height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      background-size: cover;
-      background-position: center;
-    }
-    .slide.active { opacity: 1; }
-    .caption {
-      position: absolute;
-      bottom: 30%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.55);
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: #f5d67b;
-    }
-
-    /* NAVBAR */
-    nav {
-      position: absolute;
-      top: 15px; left: 50%;
-      transform: translateX(-50%);
-      z-index: 5;
-      display: flex;
-      gap: 30px;
-    }
-    nav a {
-      color: #f5d67b;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 6px 12px;
-      border-radius: 20px;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      background: gold;
-      color: black;
-    }
-
-    .slider-controls {
-      position: absolute;
-      bottom: 10px; left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-    }
-    .dot {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.6);
-      cursor: pointer;
-    }
-    .dot.active { background: gold; }
-
-    /* HERO TEXT */
-    .hero-text {
       position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 800px;
-    }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: bold;
-      color: gold;
-      margin-bottom: 20px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-    }
-    .hero-text p {
-      font-size: 1.4rem;
-      color: #f1f1f1;
-      margin-bottom: 25px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-    }
-    .cta-btn {
-      display: inline-block;
-      padding: 12px 28px;
-      background: gold;
-      color: black;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      border: 2px solid gold;
-      transition: all 0.3s ease;
-    }
-    .cta-btn:hover {
-      background: black;
-      color: gold;
-      border-color: black;
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
+      margin-top: 10px;
     }
 
-    .shop-btn {
+    .slides {
+      display: flex;
+      width: 300%;
+      animation: slide 15s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Captions */
+    .caption {
       position: absolute;
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 3;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      background: linear-gradient(135deg, #000, #333);
-      color: gold;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      border: 2px solid gold;
-      transition: all 0.3s ease;
-    }
-    .btn:hover {
-      background: gold;
-      color: black;
-      border-color: black;
-    }
-
-    /* PRODUCTS */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 60px 20px;
-    }
-    .card {
-      background: #0a0f2c;
-      border-radius: 16px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #f5d67b;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
-    }
-    .card img {
-      width: 100%; height: 240px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 2px solid #f5d67b;
-    }
-    .card h3 {
-      margin: 15px 0 5px;
-      font-size: 1.3rem;
-      font-family: 'Playfair Display', serif;
-      color: #f5d67b;
-    }
-    .card p { margin: 5px 0; color: #ddd; }
-    .stock { color: #4caf50; font-weight: bold; margin-bottom: 10px; }
-    .card a {
-      display: inline-block;
-      padding: 10px 24px;
-      background: #f5d67b;
-      color: #0a0f2c;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-      border: 2px solid #f5d67b;
-      transition: all 0.3s ease;
-    }
-    .card a:hover {
-      background: transparent;
-      color: #f5d67b;
-      border-color: #f5d67b;
-    }
-
-    /* About & Contact */
-    .about, .contact {
-      padding: 40px 20px;
-      text-align: center;
-      background: #fff;
-      margin: 20px;
-      border-radius: 12px;
-    }
-
-    /* STORY BOX (shortened for brevity) */
-    .story-box {
-      max-width: 950px;
-      margin: 60px auto;
-      padding: 40px 42px;
-      background: #0d0d0d;
-      border-radius: 16px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.2);
-      font-family: 'Poppins', sans-serif;
-      color: #ddd;
-      line-height: 1.8;
-      text-align: center;
-    }
-    .story-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-bottom: 18px;
+      background: rgba(0, 0, 0, 0.6);
       color: #d4af37;
-    }
-    .story-box .story-meta {
-      font-size: 1rem;
-      font-style: italic;
-      color: #aaa;
-      margin-bottom: 18px;
-    }
-    .story-box .story-content {
-      max-height: 280px;
-      overflow: hidden;
-      transition: max-height 0.45s ease;
-      text-align: justify;
-    }
-    .story-box .story-content.expanded { max-height: 5000px; }
-    .story-box p { margin-bottom: 14px; }
-    .story-box .read-more {
-      display: inline-block;
-      margin-top: 20px;
       padding: 10px 20px;
-      background: linear-gradient(135deg, #000, #333);
-      color: #d4af37;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      border: 1px solid #d4af37;
-      transition: all 0.3s ease;
-    }
-    .story-box .read-more:hover {
-      background: #d4af37;
-      color: #000;
+      border-radius: 10px;
+      font-size: 18px;
     }
 
-    /* WHY CHOOSE US */
-    #why-choose-us {
-      background: #0d0d0d;
-      color: #d4af37;
-      text-align: center;
-      padding: 60px 20px;
-      border-radius: 12px;
-      margin: 40px auto;
-      max-width: 900px;
-    }
-    #why-choose-us h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-    #why-choose-us p {
-      font-size: 1.2rem;
-      margin: 8px 0;
-    }
-    #why-choose-us p::before {
-      content: "✔ ";
-      color: #d4af37;
-      font-weight: bold;
-    }
-
-    /* CONTACT */
-    #contact {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 50px 20px;
-      border-radius: 12px;
-      margin: 40px auto;
-      max-width: 900px;
-    }
-    #contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #d4af37;
-    }
-    #contact a {
-      color: #d4af37;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    #contact a:hover {
-      text-decoration: underline;
-      color: #fff;
-    }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(to right, #0d0d26, #1a1a40);
-      color: #d4af37;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      border-top: 1px solid rgba(212, 175, 55, 0.4);
-    }
-
-    /* Logo */
-    .logo {
-      position: absolute;
-      top: 20px; left: 20px;
-      z-index: 20;
-    }
-    .logo img { width: 150px; height: auto; }
-
-    /* Responsive fixes */
-    @media (max-width: 768px) {
-      .logo img { width: 80px; }
-      .logo { top: 10px; left: 10px; }
-      nav {
-        position: absolute;
-        top: 20px; right: 10px;
-        display: flex; flex-direction: row;
-        gap: 12px;
-        background: transparent;
-        padding: 0;
-      }
-      nav a {
-        color: #f5d67b;
-        font-size: 0.8rem;
-        font-weight: 500;
-        padding: 4px 6px;
-        border-radius: 12px;
-        transition: 0.3s;
-      }
-      .caption {
-        font-size: 0.9rem;
-        padding: 5px 10px;
-        bottom: 15%;
-      }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-in-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Animation */
+    @keyframes slide {
+      0% { margin-left: 0; }
+      30% { margin-left: 0; }
+      35% { margin-left: -100%; }
+      65% { margin-left: -100%; }
+      70% { margin-left: -200%; }
+      100% { margin-left: -200%; }
     }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <!-- LOGO -->
+
+  <!-- Luxury Banner -->
+  <div class="banner">
+    <!-- Logo -->
     <div class="logo">
-      <img src="logo.png" alt="Natural Fragrance Logo">
-    </div>
-    <nav>
-      <a href="#products">Home</a>
-      <a href="#our-story">Our Story</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- Slider -->
-    <div class="slider">
-      <div class="slide active" style="background-image: url('Slider1.jpg');">
-        <div class="caption">Luxury in Every Drop</div>
-      </div>
-      <div class="slide" style="background-image: url('Slider2.jpg');">
-        <div class="caption">Long Lasting Impressions</div>
-      </div>
-      <div class="slide" style="background-image: url('Slider3.jpg');">
-        <div class="caption">Affordable Premium Fragrance</div>
-      </div>
-    </div>
-    <div class="slider-controls">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
-
-    <!-- Hero Content -->
-    <div class="hero-text">
-  <h1>Natural Fragrance</h1>
-  <p>Where Luxury Meets Affordability</p>
-  <a href="#products" class="cta-btn">Shop Now</a>
+  <img src="logo.png" alt="Logo" height="50">
 </div>
-    
-  </header>
+    <h1>NATURAL FRAGRANCE</h1>
+    <p>Where Luxury Meets Affordability</p>
+  </div>
 
-  <!-- PRODUCTS -->
-  <section id="products" class="products">
-    <!-- cards here -->
-  </section>
-
-  <!-- OUR STORY -->
-  <section id="our-story" class="story-box fade-in">
-    <h2>Our Story</h2>
-    <div class="story-meta">Founded by Hamza & Nisha</div>
-    <div id="storyContent" class="story-content">
-      <p>Hamza & Nisha, the founders of <strong>Natural Fragrance</strong>, started this journey with a simple belief: that everyone deserves to experience premium, long-lasting scents without compromising on affordability.</p>
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+      <img src="Slider1.jpg" alt="Slide 1">
+      <img src="Slider2.jpg" alt="Slide 2">
+      <img src="Slider3.jpg" alt="Slide 3">
     </div>
-    <a href="#" id="storyToggle" class="read-more">Read more</a>
-  </section>
-
-  <!-- WHY CHOOSE US -->
-  <section id="why-choose-us" class="fade-in">
-    <h2>Why Choose Us?</h2>
-    <p>Premium Quality Oils</p>
-    <p>Long Lasting Scents</p>
-    <p>Affordable Prices</p>
-    <p>Free Delivery on Bulk Orders</p>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact fade-in">
-    <h2>Contact Us</h2>
-    <p>WhatsApp: <a href="https://wa.me/923322026469" target="_blank">+92 332 2026469</a></p>
-    <p>Instagram: <a href="https://instagram.com/naturalfragrance" target="_blank">@naturalfragrance</a></p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Natural Fragrance. All Rights Reserved.</p>
-  </footer>
+    <div class="caption" id="caption">Elegance in Every Drop</div>
+  </div>
 
   <script>
-    // SLIDER SCRIPT
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
+    // Captions array
+    const captions = [
+      "Elegance in Every Drop",
+      "Crafted for True Connoisseurs",
+      "Luxury That Lasts All Day"
+    ];
     let index = 0;
-    function showSlide(i) {
-      slides.forEach((s, idx) => {
-        s.classList.remove('active');
-        dots[idx].classList.remove('active');
-      });
-      slides[i].classList.add('active');
-      dots[i].classList.add('active');
-      index = i;
-    }
-    function nextSlide() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => showSlide(i));
-    });
-    setInterval(nextSlide, 5000);
+    const captionEl = document.getElementById("caption");
 
-    // STORY TOGGLE
-    (function(){
-      const toggle = document.getElementById('storyToggle');
-      const content = document.getElementById('storyContent');
-      let expanded = false;
-      if (!toggle || !content) return;
-      toggle.addEventListener('click', function(e){
-        e.preventDefault();
-        expanded = !expanded;
-        if (expanded) {
-          content.classList.add('expanded');
-          toggle.textContent = 'Show less';
-        } else {
-          content.classList.remove('expanded');
-          toggle.textContent = 'Read more';
-          content.parentElement.scrollIntoView({behavior:'smooth'});
-        }
-      });
-    })();
-
-    // FADE-IN OBSERVER
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    faders.forEach(fader => observer.observe(fader));
+    setInterval(() => {
+      index = (index + 1) % captions.length;
+      captionEl.textContent = captions[index];
+    }, 5000); // 5s per slide
   </script>
+
 </body>
 </html>
