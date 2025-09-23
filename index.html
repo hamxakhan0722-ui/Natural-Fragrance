@@ -6,19 +6,64 @@
   <title>Perfume Landing Page</title>
 
   <style>
-      /* Banner row (search - heading - logo) */
+      /* Banner row */
 .banner-row {
-  display: flex;                 
-  justify-content: space-between; 
-  align-items: center;            
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 40px; /* thoda gap left-right */
 }
 
-/* Center heading inside banner */
-.banner-row h1 {
-  flex: 1;                       
-  text-align: center;            
-  font-size: 32px;               
-  color: #d4af37;                
+/* Center part (heading + tagline) */
+.banner-center {
+  flex: 1; 
+  text-align: center;
+}
+
+.banner-center h1 {
+  font-size: 32px;
+  color: #d4af37;
+  margin: 0;
+}
+
+.banner-center p {
+  font-size: 16px;
+  color: #fff;
+  font-style: italic;
+  margin: 5px 0 0 0;
+}
+
+/* Logo */
+.logo img {
+  height: 60px;
+  width: auto;
+}
+
+/* Search box */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 2px solid #d4af37;
+  width: 220px;
+}
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  width: 200px;
+}
+.search-box button {
+  background: #d4af37;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
 }
 
 /* Search box design */
@@ -188,22 +233,23 @@
 
   <!-- Luxury Banner -->
   <div class="banner">
-  <div class="banner-row">
-    <!-- Search box -->
-    <div class="search-box">
-      <input type="text" placeholder="Search..." />
-      <button>🔍</button>
-    </div>
-
-    <!-- Center heading -->
-    <h1>NATURAL FRAGRANCE</h1>
-
-    <!-- Logo -->
-    <div class="logo">
-      <img src="logo.png" alt="Logo" height="50">
-    </div>
+ <div class="banner-row">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.png" alt="Logo" height="60">
   </div>
-  <p>Where Luxury Meets Affordability</p>
+
+  <!-- Heading + tagline -->
+  <div class="banner-center">
+    <h1>NATURAL FRAGRANCE</h1>
+    <p>Where Luxury Meets Affordability</p>
+  </div>
+
+  <!-- Search box -->
+  <div class="search-box">
+    <input type="text" placeholder="Search..." />
+    <button>🔍</button>
+  </div>
 </div>
 
   <!-- Slider -->
