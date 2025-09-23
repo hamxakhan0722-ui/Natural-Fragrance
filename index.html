@@ -166,85 +166,62 @@
   </div>
 
   <script>
-    // Captions array
-    const captions = [
-      "Elegance in Every Drop",
-      "Crafted for True Connoisseurs",
-      "Luxury That Lasts All Day"
-    ];
-    let index = 0;
-    const captionEl = document.getElementById("caption");
-    function currentSlide(n) {
-  index = n;
-  updateSlide();
-}
+   // Captions array
+  const captions = [
+    "Elegance in Every Drop",
+    "Crafted for True Connoisseurs",
+    "Luxury That Lasts All Day",
+    "Experience Pure Sophistication"
+  ];
 
-function updateSlide() {
-  // Captions update
-  captionEl.textContent = captions[index];
-
-  // Dots update
+  const slides = document.querySelectorAll(".slides img");
+  const captionEl = document.getElementById("caption");
   const dots = document.querySelectorAll(".dot");
-  dots.forEach((dot, i) => {
-    dot.classList.remove("active");
-    if (i === index) {
-      dot.classList.add("active");
+  let currentIndex = 0;
+
+  // Show slide function
+  function showSlide(index) {
+    if (index < 0) {
+      index = slides.length - 1;
+    } else if (index >= slides.length) {
+      index = 0;
     }
-    const slides = document.querySelectorAll(".slides img");
-let currentIndex = 0;
+    currentIndex = index;
 
-// function to show slide
-function showSlide(index) {
-  if (index < 0) {
-    index = slides.length - 1;
-  } else if (index >= slides.length) {
-    index = 0;
+    // Slide movement
+    document.querySelector(".slides").style.transform = `translateX(-${index * 100}%)`;
+
+    // Caption update
+    captionEl.textContent = captions[index];
+
+    // Dots update
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
   }
-  currentIndex = index;
 
-  // move slides
-  document.querySelector(".slides").style.transform = `translateX(-${index * 100}%)`;
+  // Arrow buttons
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
 
-  // update caption
-  captionEl.textContent = captions[index % captions.length];
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
 
-  // update dots
-  const dots = document.querySelectorAll(".dot");
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-}
+  // Dots click
+  function currentSlide(n) {
+    showSlide(n);
+  }
 
-// arrow buttons
-function nextSlide() {
-  showSlide(currentIndex + 1);
-}
+  // Auto-play
+  setInterval(() => {
+    nextSlide();
+  }, 5000);
 
-function prevSlide() {
-  showSlide(currentIndex - 1);
-}
-
-// dots control
-function currentSlide(n) {
-  showSlide(n);
-}
-
-// auto play
-setInterval(() => {
-  nextSlide();
-}, 5000);
-
-// start first slide
-showSlide(0);
-  });
-}
-
-    setInterval(() => {
-      index = (index + 1) % captions.length;
-      captionEl.textContent = captions[index];
-      updateSlide(); //
-    }, 5000); // 5s per slide
-  </script>
+  // Initialize first slide
+  showSlide(0);
+</script>
 
 </body>
 </html>
