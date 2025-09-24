@@ -238,6 +238,32 @@
 .dot:hover {
   background-color: #d4af37; /* Gold */
 }
+    /* Navigation Buttons */
+.navigation-buttons {
+    text-align: center;
+    padding: 20px;
+    margin-top: -50px; /* Buttons ko thora upar karne ke liye */
+    position: relative; /* Z-index ko kaam karne ke liye */
+    z-index: 3; /* Slider ke upar rakhne ke liye */
+}
+
+.navigation-buttons button {
+    background-color: #d4af37; /* Gold colour */
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.navigation-buttons button:hover {
+    background-color: #e6c25a;
+    transform: translateY(-2px);
+}
   </style>
 </head>
 <body>
