@@ -284,6 +284,37 @@
       object-fit: cover;
       border-radius: 8px;
     }
+    /* -------- Hover Image Swap CSS -------- */
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease-in-out;
+  border-radius: 8px;
+}
+
+.product-image .hover-img {
+  opacity: 0;
+  z-index: 1;
+}
+
+.product-image:hover .hover-img {
+  opacity: 1;
+}
+
+.product-image:hover .default-img {
+  opacity: 0;
+}
 
     .product h3 {
       margin: 10px 0 5px;
@@ -359,47 +390,76 @@
     <button>Contact</button>
   </div>
 
-  <!-- Products Section -->
-  <div class="products">
-    <h2>Our Products</h2>
-    <div class="product-grid">
-      <div class="product">
-        <img src="9 PM.jpg" alt="9 PM">
-        <h3>9 PM</h3>
-        <p>Luxury Fragrance</p>
+ <!-- Products Section -->
+<div class="products">
+  <h2>Our Products</h2>
+  <div class="product-grid">
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="9 PM.jpg" alt="9 PM">
+        <img class="hover-img" src="9 PM-hover.jpg" alt="9 PM Hover">
       </div>
-      <div class="product">
-        <img src="Bombshell.jpg" alt="Bombshell Perfume">
-        <h3>Bombshell</h3>
-        <p>Fresh Floral Scent</p>
-      </div>
-      <div class="product">
-        <img src="Executive Aura.jpeg.jpg" alt="Executive Aura Perfume">
-        <h3>Executive Aura</h3>
-        <p>Bold and Confident</p>
-      </div>
-      <div class="product">
-        <img src="Glacior.jpg" alt="Glacior Perfume">
-        <h3>Glacior</h3>
-        <p>Cool and Refreshing</p>
-      </div>
-      <div class="product">
-        <img src="Oud Al Huda.jpg" alt="Oud Al Huda Perfume">
-        <h3>Oud Al Huda</h3>
-        <p>Traditional Oud Luxury</p>
-      </div>
-      <div class="product">
-        <img src="Red Drift.jpg" alt="Red Drift Perfume">
-        <h3>Red Drift</h3>
-        <p>Passionate and Bold</p>
-      </div>
-      <div class="product">
-        <img src="Royal Amirah.JPG.jpg" alt="Royal Amirah Perfume">
-        <h3>Royal Amirah</h3>
-        <p>Elegant and Regal</p>
-      </div>
+      <h3>9 PM</h3>
+      <p>Luxury Fragrance</p>
     </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="Bombshell.jpg" alt="Bombshell Perfume">
+        <img class="hover-img" src="Bombshell-hover.jpg" alt="Bombshell Hover">
+      </div>
+      <h3>Bombshell</h3>
+      <p>Fresh Floral Scent</p>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="Executive Aura.jpeg.jpg" alt="Executive Aura">
+        <img class="hover-img" src="Executive Aura-hover.jpg" alt="Executive Aura Hover">
+      </div>
+      <h3>Executive Aura</h3>
+      <p>Bold and Confident</p>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="Glacior.jpg" alt="Glacior">
+        <img class="hover-img" src="Glacior-hover.jpg" alt="Glacior Hover">
+      </div>
+      <h3>Glacior</h3>
+      <p>Cool and Refreshing</p>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="Oud Al Huda.jpg" alt="Oud Al Huda">
+        <img class="hover-img" src="Oud Al Huda-hover.jpg" alt="Oud Al Huda Hover">
+      </div>
+      <h3>Oud Al Huda</h3>
+      <p>Traditional Oud Luxury</p>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="Red Drift.jpg" alt="Red Drift">
+        <img class="hover-img" src="Red Drift-hover.jpg" alt="Red Drift Hover">
+      </div>
+      <h3>Red Drift</h3>
+      <p>Passionate and Bold</p>
+    </div>
+
+    <div class="product">
+      <div class="product-image">
+        <img class="default-img" src="Royal Amirah.JPG.jpg" alt="Royal Amirah">
+        <img class="hover-img" src="Royal Amirah-hover.jpg" alt="Royal Amirah Hover">
+      </div>
+      <h3>Royal Amirah</h3>
+      <p>Elegant and Regal</p>
+    </div>
+
   </div>
+</div>
 
   <script>
     // Captions array
