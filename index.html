@@ -19,18 +19,25 @@
     }
 
     /* Banner row */
-    .banner-row {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      padding: 0 40px;
-      position: relative;
-    }
+   .banner-row {
+  display: flex;                 /* <-- use flex for easier centering */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: relative;
+  gap: 20px;                     /* small gap between left/center/right */
+}
 
     .banner-center {
-      text-align: center;
-      margin-left: 60px;
-    }
+  text-align: center;
+  flex: 1;                       /* allow center to grow */
+  display: flex;                 /* make its children (h1 + p) a column */
+  flex-direction: column;
+  align-items: center;           /* center horizontally */
+  justify-content: center;       /* center vertically inside the banner row */
+  margin: 0;                     /* remove old offset */
+  gap: 6px;
+}
 
     .banner-center h1 {
       font-size: 32px;
@@ -54,14 +61,14 @@
     /* Search box */
     .search-box {
       display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 25px;
-      overflow: hidden;
-      border: 2px solid #d4af37;
-      margin-left: 100px;
-      width: 280px;
-    }
+  align-items: center;
+  background: #fff;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 2px solid #d4af37;
+  width: 260px;    /* slightly narrower so centre has room */
+  margin: 0;       /* ensure no offset */
+}
     .cart-btn {
     background: #d4af37;      /* Gold */
     color: #000;
@@ -282,7 +289,7 @@
     .search-cart-container {
   display: flex;       /* ek line mai lane ke liye */
   align-items: center; /* vertically center karega */
-  gap: 10px;           /* dono ke beech ka gap */
+  gap: 12px;           /* dono ke beech ka gap */
 }
   </style>
 </head>
@@ -308,7 +315,6 @@
     <input type="text" placeholder="Search..." />
     <button>🔍</button>
   </div>
-
   <button class="cart-btn">🛒 Cart</button>
 </div>
   </div>
