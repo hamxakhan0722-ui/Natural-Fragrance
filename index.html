@@ -279,6 +279,11 @@
     .product:hover {
       transform: translateY(-5px);
     }
+    .search-cart-container {
+  display: flex;       /* ek line mai lane ke liye */
+  align-items: center; /* vertically center karega */
+  gap: 10px;           /* dono ke beech ka gap */
+}
   </style>
 </head>
 <body>
@@ -298,12 +303,14 @@
       </div>
 
       <!-- Search box -->
-      <div class="search-box">
-        <input type="text" placeholder="Search..." />
-        <button>🔍</button>
-      </div>
-      <button class="cart-btn">🛒 Cart</button>
-    </div>
+      <div class="search-cart-container">
+  <div class="search-box">
+    <input type="text" placeholder="Search..." />
+    <button>🔍</button>
+  </div>
+
+  <button class="cart-btn">🛒 Cart</button>
+</div>
   </div>
 
   <!-- Slider -->
