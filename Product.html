@@ -58,25 +58,25 @@
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const name = params.get('name') || 'Red Drift';
+const name = params.get('name') || 'Default';
 
-    document.getElementById('title').textContent = name;
+document.getElementById('title').textContent = name;
 
-    const totalImages = 3;
-    const mainImage = document.getElementById('main');
-    const thumbsDiv = document.getElementById('thumbs');
+const totalImages = 2;  // ab total sirf 2 images hain
+const mainImage = document.getElementById('main');
+const thumbsDiv = document.getElementById('thumbs');
 
-    for (let i = 1; i <= totalImages; i++) {
-      const imgSrc = `${name}-${i}.jpg`;
-      const img = document.createElement('img');
-      img.src = imgSrc;
-      img.onclick = () => {
-        mainImage.src = imgSrc;
-      };
-      thumbsDiv.appendChild(img);
+for (let i = 1; i <= totalImages; i++) {
+  const imgSrc = `${name}-${i}.jpg`;
+  const img = document.createElement('img');
+  img.src = imgSrc;
+  img.onclick = () => {
+    mainImage.src = imgSrc;
+  };
+  thumbsDiv.appendChild(img);
 
-      if (i === 1) mainImage.src = imgSrc;
-    }
+  if (i === 1) mainImage.src = imgSrc;
+}
   </script>
 </body>
 </html>
