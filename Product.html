@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Detail</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+    }
+    .container {
+      display: flex;
+      max-width: 1000px;
+      margin: 50px auto;
+      gap: 30px;
+    }
+    .thumbnails {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .thumbnails img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border: 2px solid gold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .main-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid gold;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .main-image img {
+      max-width: 100%;
+      max-height: 500px;
+    }
+    h2 {
+      text-align: center;
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="title">Product Name</h2>
+  <div class="container">
+    <div class="thumbnails" id="thumbs"></div>
+    <div class="main-image">
+      <img id="main" src="" alt="Main Product Image" />
+    </div>
+  </div>
 
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || 'Red Drift';
+
+    document.getElementById('title').textContent = name;
+
+    const totalImages = 3;
+    const mainImage = document.getElementById('main');
+    const thumbsDiv = document.getElementById('thumbs');
+
+    for (let i = 1; i <= totalImages; i++) {
+      const imgSrc = `${name}-${i}.jpg`;
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.onclick = () => {
+        mainImage.src = imgSrc;
+      };
+      thumbsDiv.appendChild(img);
+
+      if (i === 1) mainImage.src = imgSrc;
+    }
+  </script>
+</body>
+</html>
