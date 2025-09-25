@@ -28,29 +28,36 @@
   gap: 20px;                     /* small gap between left/center/right */
 }
 
-    .banner-center {
+    /* CENTER HEADER: absolute center so title stays in page MID */
+.banner-center {
+  position: absolute;      /* take it out of normal flow */
+  left: 50%;               /* page center horizontally */
+  top: 50%;                /* vertical center inside banner */
+  transform: translate(-50%, -50%);
   text-align: center;
-  flex: 1;                       /* allow center to grow */
-  display: flex;                 /* make its children (h1 + p) a column */
-  flex-direction: column;
-  align-items: center;           /* center horizontally */
-  justify-content: center;       /* center vertically inside the banner row */
-  margin: 0;                     /* remove old offset */
-  gap: 6px;
+  width: auto;
+  z-index: 5;              /* above slider controls */
+  pointer-events: none;    /* allow clicks on right/left items if overlap */
 }
 
-    .banner-center h1 {
-      font-size: 32px;
-      color: #d4af37;
-      margin: 0;
-    }
+/* let user still select/click on the text itself */
+.banner-center > * {
+  pointer-events: auto;
+}
 
-    .banner-center p {
-      font-size: 16px;
-      color: #fff;
-      font-style: italic;
-      margin: 5px 0 0 0;
-    }
+.banner-center h1 {
+  font-size: 32px;
+  color: #d4af37;
+  margin: 0;
+  font-weight: 700;
+}
+
+.banner-center p {
+  font-size: 16px;
+  color: #fff;
+  font-style: italic;
+  margin-top: 6px;
+}
 
     /* Logo */
     .logo img {
