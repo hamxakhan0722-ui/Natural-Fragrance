@@ -1,82 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
   <title>Product Detail</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
+    :root {
+      --gold: #d4af37;
+      --bg: #000;
+      --card: #111;
+      --muted: #aaa;
+    }
     body {
-      background-color: black;
-      color: white;
-      font-family: sans-serif;
+      background: var(--bg);
+      color: #fff;
+      font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
+      margin: 0;
+      padding: 20px;
     }
     .container {
+      max-width: 1100px;
+      margin: 30px auto;
       display: flex;
-      max-width: 1000px;
-      margin: 50px auto;
-      gap: 30px;
+      gap: 24px;
+      align-items: flex-start;
     }
-    .thumbnails {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+
+    /* Left thumbnails column */
+    .thumbs {
+      width: 96px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
-    .thumbnails img {
-      width: 100px;
-      height: 100px;
+    .thumbs img {
+      width: 96px;
+      height: 96px;
       object-fit: cover;
-      border: 2px solid gold;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      border: 2px solid transparent;
     }
+    .thumbs img.active {
+      border-color: var(--gold);
+      transform: translateX(-2px);
+    }
+
+    /* Main image */
     .main-image {
       flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 2px solid gold;
+      background: var(--card);
+      padding: 18px;
       border-radius: 10px;
-      padding: 20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
     .main-image img {
       max-width: 100%;
-      max-height: 500px;
+      max-height: 520px;
+      border-radius: 8px;
+      object-fit: contain;
+      display:block;
     }
-    h2 {
-      text-align: center;
-      color: gold;
+
+    /* Right details column */
+    .details {
+      width: 320px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .title {
+      font-size: 28px;
+      color: var(--gold);
+      margin: 0;
+    }
+    .rating {
+      color: var(--gold);
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+    .volumes {
+      background: rgba(255,255,255,0.03);
+      padding: 12px;
+      border-radius: 8px;
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+    .volumes label {
+      background:#fff;
+      color:#000;
+      border-radius:20px;
+      padding:8px 12px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:14px;
+    }
+    .volumes input { display:none; }
+    .price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .add-row {
+      width:100%;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .add-btn {
+      background: var(--gold);
+      color: #000;
+      padding: 10px 16px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .container { flex-direction: column; align-items: stretch; padding: 10px; }
+      .thumbs { flex-direction: row; width: 100%; overflow-x:auto; }
+      .thumbs img { width: 84px; height:84px; }
+      .details { width: 100%; }
+      .main-image img { max-height: 360px; }
     }
   </style>
 </head>
 <body>
-  <h2 id="title">Product Name</h2>
-  <div class="container">
-    <div class="thumbnails" id="thumbs"></div>
-    <div class="main-image">
-      <img id="main" src="" alt="Main Product Image" />
+
+  <div id="root">
+    <div class="container" id="container">
+      <div class="thumbs" id="thumbs"></div>
+
+      <div class="main-image">
+        <img id="mainImage" src="" alt="Main product image">
+      </div>
+
+      <div class="details">
+        <h1 class="title" id="title">Product</h1>
+        <div class="rating" id="rating">★★★★☆</div>
+        <div class="desc small" id="shortDesc">Loading...</div>
+
+        <div style="height:8px"></div>
+
+        <div class="small">Choose volume</div>
+        <div class="volumes" id="volumes"></div>
+
+        <div class="price" id="price">—</div>
+
+        <div class="add-row">
+          <button class="add-btn" id="addToCart">Add to Cart</button>
+          <div class="small" id="sku">SKU: —</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-const name = params.get('name') || 'Default';
-
-document.getElementById('title').textContent = name;
-
-const totalImages = 2;  // ab total sirf 2 images hain
-const mainImage = document.getElementById('main');
-const thumbsDiv = document.getElementById('thumbs');
-
-for (let i = 1; i <= totalImages; i++) {
-  const imgSrc = `${name}-${i}.jpg`;
-  const img = document.createElement('img');
-  img.src = imgSrc;
-  img.onclick = () => {
-    mainImage.src = imgSrc;
+<script>
+  // --- PRODUCT DATA: edit/add more products here
+  // keys = slugs used in index links (use lowercase, no spaces)
+  const products = {
+    "bombshell": {
+      title: "Bombshell",
+      shortDesc: "Fresh floral, bright & alluring.",
+      // images must be uploaded to your repo in same folder as product.html
+      images: ["bombshell-1.jpg","bombshell-2.jpg","bombshell-3.jpg"],
+      rating: 4,
+      sku: "BOM-001",
+      price: { "50ml": 2499, "30ml": 1699 }
+    },
+    "9pm": {
+      title: "9 PM",
+      shortDesc: "Night-time seductive aroma.",
+      images: ["9pm-1.jpg","9pm-2.jpg"],
+      rating: 4,
+      sku: "9PM-001",
+      price: { "50ml": 2299, "30ml": 1499 }
+    },
+    "executive-aura": {
+      title: "Executive Aura",
+      shortDesc: "Bold, long-lasting professional scent.",
+      images: ["executive-aura-1.jpg","executive-aura-2.jpg"],
+      rating: 4,
+      sku: "EXA-001",
+      price: { "50ml": 2799, "30ml": 1799 }
+    },
+    "glacior": {
+      title: "Glacior",
+      shortDesc: "Cool and refreshing.",
+      images: ["glacior-1.jpg","glacior-2.jpg"],
+      rating: 4,
+      sku: "GLC-001",
+      price: { "50ml": 1999, "30ml": 1299 }
+    },
+    "oud-al-huda": {
+      title: "Oud Al Huda",
+      shortDesc: "Traditional oud luxury.",
+      images: ["oud-al-huda-1.jpg","oud-al-huda-2.jpg"],
+      rating: 4,
+      sku: "OUD-001",
+      price: { "50ml": 3499, "30ml": 2299 }
+    },
+    "red-drift": {
+      title: "Red Drift",
+      shortDesc: "Passionate and bold.",
+      images: ["red-drift-1.jpg","red-drift-2.jpg"],
+      rating: 4,
+      sku: "RDF-001",
+      price: { "50ml": 2199, "30ml": 1399 }
+    },
+    "royal-amirah": {
+      title: "Royal Amirah",
+      shortDesc: "Elegant and regal.",
+      images: ["royal-amirah-1.jpg","royal-amirah-2.jpg"],
+      rating: 4,
+      sku: "RAM-001",
+      price: { "50ml": 2999, "30ml": 1999 }
+    }
   };
-  thumbsDiv.appendChild(img);
 
-  if (i === 1) mainImage.src = imgSrc;
-}
-  </script>
+  // --- helper: get product slug from URL
+  const params = new URLSearchParams(window.location.search);
+  const slug = (params.get('product') || '').toLowerCase();
+
+  // DOM refs
+  const titleEl = document.getElementById('title');
+  const thumbsEl = document.getElementById('thumbs');
+  const mainImage = document.getElementById('mainImage');
+  const ratingEl = document.getElementById('rating');
+  const descEl = document.getElementById('shortDesc');
+  const volumesEl = document.getElementById('volumes');
+  const priceEl = document.getElementById('price');
+  const skuEl = document.getElementById('sku');
+
+  if (!slug || !products[slug]) {
+    // show friendly error
+    document.getElementById('container').innerHTML = '<div style="color:#fff;font-size:18px;padding:30px;background:#111;border-radius:8px">Product not found. Make sure you opened this page using a link like <code>product.html?product=bombshell</code> and that the product slug exists.</div>';
+  } else {
+    const p = products[slug];
+
+    // render title / desc / rating / sku
+    titleEl.textContent = p.title;
+    descEl.textContent = p.shortDesc;
+    skuEl.textContent = "SKU: " + (p.sku || '—');
+
+    // rating stars (★ filled, ☆ empty)
+    const stars = Array.from({length:5}, (_,i) => i < p.rating ? '★' : '☆').join('');
+    ratingEl.textContent = stars;
+
+    // thumbnails
+    thumbsEl.innerHTML = '';
+    p.images.forEach((imgSrc, index) => {
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = p.title + ' ' + (index+1);
+      img.dataset.src = imgSrc;
+      if (index===0) img.classList.add('active');
+      img.onclick = () => {
+        document.querySelectorAll('.thumbs img').forEach(t=>t.classList.remove('active'));
+        img.classList.add('active');
+        mainImage.src = imgSrc;
+      };
+      thumbsEl.appendChild(img);
+    });
+
+    // set main image to first
+    mainImage.src = p.images[0];
+
+    // volumes (radio buttons)
+    volumesEl.innerHTML = '';
+    const volumeKeys = Object.keys(p.price);
+    let selectedVolume = volumeKeys[0];
+
+    volumeKeys.forEach((vol, i) => {
+      const id = 'vol_' + i;
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'volume';
+      radio.id = id;
+      radio.value = vol;
+      if (i===0) radio.checked = true;
+      radio.onchange = () => {
+        selectedVolume = radio.value;
+        updatePrice();
+      };
+
+      const label = document.createElement('label');
+      label.htmlFor = id;
+      label.textContent = vol;
+      label.prepend(radio);
+      volumesEl.appendChild(label);
+    });
+
+    // update price function
+    function updatePrice(){
+      const amount = p.price[selectedVolume];
+      priceEl.textContent = `Price: PKR ${amount.toLocaleString()}`;
+    }
+    updatePrice();
+
+    // Add to Cart demo button
+    document.getElementById('addToCart').addEventListener('click', () => {
+      alert(p.title + ' (' + selectedVolume + ') added to cart (demo).');
+    });
+  }
+</script>
 </body>
 </html>
