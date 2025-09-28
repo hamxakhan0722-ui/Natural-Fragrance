@@ -173,11 +173,13 @@
   // --- PRODUCT DATA: edit/add more products here
   // keys = slugs used in index links (use lowercase, no spaces)
   const products = {
-   "bombshell": {
-  name: "Bombshell",
+  "bombshell": {
+  title: "Bombshell",
+  shortDesc: "Fresh Floral Scent.",
   images: ["Bombshell-1.jpg", "Bombshell-2.jpg"],
-  ml: ["50ml", "30ml"],
-  price: "PKR 2500"
+  rating: 4,
+  sku: "BOM-001",
+  price: { "50ml": 2500, "30ml": 1800 }
 },
     "9pm": {
       title: "9 PM",
@@ -187,46 +189,46 @@
       sku: "9PM-001",
       price: { "50ml": 2299, "30ml": 1499 }
     },
-    "executive-aura": {
-      title: "Executive Aura",
-      shortDesc: "Bold, long-lasting professional scent.",
-      images: ["executive-aura-1.jpg","executive-aura-2.jpg"],
-      rating: 4,
-      sku: "EXA-001",
-      price: { "50ml": 2799, "30ml": 1799 }
-    },
+   "executive-aura": {
+  title: "Executive Aura",
+  shortDesc: "Bold, long-lasting professional scent.",
+  images: ["Executive Aura.jpeg.jpg", "Executive Aura.jpeg-hover.jpg"],
+  rating: 4,
+  sku: "EXA-001",
+  price: { "50ml": 2799, "30ml": 1799 }
+},
     "glacior": {
-      title: "Glacior",
-      shortDesc: "Cool and refreshing.",
-      images: ["glacior-1.jpg","glacior-2.jpg"],
-      rating: 4,
-      sku: "GLC-001",
-      price: { "50ml": 1999, "30ml": 1299 }
-    },
+  title: "Glacior",
+  shortDesc: "Cool and refreshing.",
+  images: ["Glacior.jpg"],
+  rating: 4,
+  sku: "GLC-001",
+  price: { "50ml": 1999 }
+},
     "oud-al-huda": {
-      title: "Oud Al Huda",
-      shortDesc: "Traditional oud luxury.",
-      images: ["oud-al-huda-1.jpg","oud-al-huda-2.jpg"],
-      rating: 4,
-      sku: "OUD-001",
-      price: { "50ml": 3499, "30ml": 2299 }
-    },
-    "red-drift": {
-      title: "Red Drift",
-      shortDesc: "Passionate and bold.",
-      images: ["red-drift-1.jpg","red-drift-2.jpg"],
-      rating: 4,
-      sku: "RDF-001",
-      price: { "50ml": 2199, "30ml": 1399 }
-    },
+  title: "Oud Al Huda",
+  shortDesc: "Traditional oud luxury.",
+  images: ["Oud Al Huda.jpg", "Oud Al Huda-hover.jpg"],
+  rating: 4,
+  sku: "OUD-001",
+  price: { "50ml": 3499, "30ml": 2299 }
+},
+   "red-drift": {
+  title: "Red Drift",
+  shortDesc: "Passionate and bold.",
+  images: ["Red Drift.jpg"],
+  rating: 4,
+  sku: "RDF-001",
+  price: { "50ml": 2199 }
+},
     "royal-amirah": {
-      title: "Royal Amirah",
-      shortDesc: "Elegant and regal.",
-      images: ["royal-amirah-1.jpg","royal-amirah-2.jpg"],
-      rating: 4,
-      sku: "RAM-001",
-      price: { "50ml": 2999, "30ml": 1999 }
-    }
+  title: "Royal Amirah",
+  shortDesc: "Elegant and regal.",
+  images: ["Royal Amirah.JPG.jpg", "Royal Amirah-hover.jpg"],
+  rating: 4,
+  sku: "RAM-001",
+  price: { "50ml": 2999, "30ml": 1999 }
+},
   };
 
   // --- helper: get product slug from URL
